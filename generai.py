@@ -41,9 +41,9 @@ def start_game():
     print("---------------- GENERALA -----------------")
     list_plugins(False)
 
-    players_input = input("Ingrese los jugadores (separándolos con ,): ")
+    players_input = input("Ingrese los jugadores (separandolos con ,): ")
     players = [int(x.strip()) for x in players_input.split(",")]
-    nscoresheets = int(input("Cuántas casillas? "))
+    nscoresheets = int(input("Cuantas casillas? "))
     game = Game(nscoresheets)
     for player in players:
         game.add_player(plugins_list[player])

@@ -1,0 +1,79 @@
+#scoresheets_table {
+  table-layout: fixed;
+}
+
+#scoresheets_table .score_row {
+  height: 60px;
+}
+
+#scoresheets_table thead th {
+  text-align: center;
+  background-color: black;
+  border: 1px solid black;
+}
+
+#scoresheets_table .total_row {
+  height: 100px;
+}
+
+#scoresheets_table .headers_col {
+  width: 120px;
+  text-align: center;
+}
+
+#scoresheets_table .score_row td {
+  vertical-align: middle;
+}
+
+#scoresheets_table .total_row td {
+  vertical-align: middle;
+}
+
+#scoresheets_table .score_row td img {
+  vertical-align: middle;
+}
+
+#scoresheets_table .digits {
+  background-color: #f6f6f6;
+}
+
+#scoresheets_table .plays {
+  background-color: #eaeaea;
+}
+
+.notecell {
+  text-align: center;
+}
+
+.totalcell {
+  text-align: center;
+}
+
+.partial_winner
+{
+  background-color: green;
+}
+
+.winner 
+{
+}
+
+.b_right
+{
+    border-right: 2px solid black ! important;
+}
+
+.b_top
+{
+    border-top: 2px solid black ! important;
+}
+
+.b_bottom
+{
+    border-bottom: 2px solid black ! important;
+}
+
+.player_name
+{
+    width: 60px;
+}

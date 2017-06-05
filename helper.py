@@ -117,6 +117,15 @@ def print_scoresheets(scoresheets):
     totales = [0] * len(scoresheets) * len(scoresheets[0])
     players = None
     i = 0
+
+    #[
+    #   {'SERIAL': {'4': 4}, 'CONIO': {'6': 18}},
+    #   {'SERIAL': {}, 'CONIO': {}},
+    #   {'SERIAL': {}, 'CONIO': {}},
+    #   {'SERIAL': {}, 'CONIO': {}}
+    #]
+    #print (scoresheets)
+
     for ss in scoresheets:
         players = sorted(ss.keys())
         for player in players:
@@ -145,4 +154,3 @@ def print_scoresheets(scoresheets):
     print("----------")
     print_scoresheet_line("**TOTAL**", totales)
     print("==========")
-

@@ -118,8 +118,8 @@ def escalera(rolls_allowed = 3, sin_comodin = False):
 def sim(n, f):
     ocurrences = 0
     for i in range(n):
-	if f():
-	    ocurrences += 1
+    if f():
+        ocurrences += 1
     return ocurrences
 
 

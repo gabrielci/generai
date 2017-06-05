@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://www.wapy.com.py/alseis/alseis.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+<!-- Bootstrap -->
+<link href="/static/alseis_files/bootstrap.min.css" rel="stylesheet">
+<!-- al seis -->
+<link href="/static/alseis_files/alseis.css" rel="stylesheet">
+<style type="text/css">
+.popover
+{
+  min-width: 350 ! important;
+}
+.btnnumber
+{
+  width: 80px;
+}
+.btnfigure
+{
+  width: 125px;
+}
+.modal-title-play
+{
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ONE COLUMN FOR EACH SHEET -->
+<div class="table-responsive">
+
+  <table id="scoresheets_table" class="table table-bordered">
+    <thead>
+      <tr class="score_players_header success">
+        <th>
+          <div id="menu_button" class="label-warning">MENU</div>
+        </th>
+        <!--TESTING-->
+        <th class="b_top b_bottom "><h3><span id="_name_0_0" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_0" class="label label-success">235</span> <span id="_nplays_0_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_0" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_0" class="label label-success">235</span> <span id="_nplays_1_0" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_0" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_0" class="label label-success">235</span> <span id="_nplays_2_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_1" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_1" class="label label-success">235</span> <span id="_nplays_0_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_1" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_1" class="label label-success">235</span> <span id="_nplays_1_1" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_1" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_1" class="label label-success">235</span> <span id="_nplays_2_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_2" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_2" class="label label-success">235</span> <span id="_nplays_0_2" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_2" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_2" class="label label-success">235</span> <span id="_nplays_1_2" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_2" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_2" class="label label-success">235</span> <span id="_nplays_2_2" class="label label-info">0/7</span></th>
+        
+      </tr>
+     
+    </thead>
+    <tbody>
+      
+    <tr class="total_row warning">
+      <td class="headers_col"><h2>Total</h2></td><td id="_0_0" class="totalcell even " data-value="3" data-player="0" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_0" class="totalcell even " data-value="3" data-player="1" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_0" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_1" class="totalcell odd " data-value="3" data-player="0" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_1" class="totalcell odd " data-value="3" data-player="1" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_1" class="totalcell odd b_right " data-value="3" data-player="2" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_2" class="totalcell even " data-value="3" data-player="0" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_2" class="totalcell even " data-value="3" data-player="1" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_2" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td>
+    </tr>
+    <tr class="score_row digits" data-play="_4">
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-04.png">&nbsp;</td><td id="_0_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="0" data-play="_4"></td><td id="_1_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="0" data-play="_4"></td><td id="_2_0_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="0" data-play="_4"></td><td id="_0_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="0" data-scoresheet="1" data-play="_4"></td><td id="_1_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="1" data-scoresheet="1" data-play="_4"></td><td id="_2_1_4" class="notecell _notecell_4 odd b_right b_top " data-value="4" data-player="2" data-scoresheet="1" data-play="_4"></td><td id="_0_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="2" data-play="_4"></td><td id="_1_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="2" data-play="_4"></td><td id="_2_2_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="2" data-play="_4"></td>
+    </tr>
+    <tr class="score_row digits" data-play="_5">
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-05.png"></td><td id="_0_0_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="0" data-play="_5"></td><td id="_1_0_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="0" data-play="_5"></td><td id="_2_0_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="0" data-play="_5"></td><td id="_0_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="0" data-scoresheet="1" data-play="_5"></td><td id="_1_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="1" data-scoresheet="1" data-play="_5"></td><td id="_2_1_5" class="notecell _notecell_5 odd b_right " data-value="5" data-player="2" data-scoresheet="1" data-play="_5"></td><td id="_0_2_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="2" data-play="_5"></td><td id="_1_2_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="2" data-play="_5"></td><td id="_2_2_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="2" data-play="_5"></td>
+    </tr>
+    <tr class="score_row digits" data-play="_6">
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-06.png"></td><td id="_0_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="0" data-play="_6"></td><td id="_1_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="0" data-play="_6"></td><td id="_2_0_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="0" data-play="_6"></td><td id="_0_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="0" data-scoresheet="1" data-play="_6"></td><td id="_1_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="1" data-scoresheet="1" data-play="_6"></td><td id="_2_1_6" class="notecell _notecell_6 odd b_right b_bottom " data-value="6" data-player="2" data-scoresheet="1" data-play="_6"></td><td id="_0_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="2" data-play="_6"></td><td id="_1_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="2" data-play="_6"></td><td id="_2_2_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="2" data-play="_6"></td>
+    </tr>
+    <tr class="score_row plays" data-play="_straight">
+      <td class="headers_col">
+        <img width="20" src="/static/alseis_files/dice-05.png">
+        <img width="20" src="/static/alseis_files/dice-04.png">
+        <img width="20" src="/static/alseis_files/dice-03.png"><br>
+        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/alseis_files/dice-01.png">
+      </td><td id="_0_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="0" data-play="_straight"></td><td id="_1_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="0" data-play="_straight"></td><td id="_2_0_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="0" data-play="_straight"></td><td id="_0_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="0" data-scoresheet="1" data-play="_straight"></td><td id="_1_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="1" data-scoresheet="1" data-play="_straight"></td><td id="_2_1_straight" class="notecell _notecell_straight odd b_right " data-value="7" data-player="2" data-scoresheet="1" data-play="_straight"></td><td id="_0_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="2" data-play="_straight"></td><td id="_1_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="2" data-play="_straight"></td><td id="_2_2_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="2" data-play="_straight"></td>
+    </tr>
+    <tr class="score_row plays" data-play="_fullhouse">
+      <td class="headers_col">
+        <img width="20" src="/static/alseis_files/dice-06.png" alt="6">
+        <img width="20" src="/static/alseis_files/dice-06.png" alt="6">
+        <img width="20" src="/static/alseis_files/dice-06.png" alt="6"><br>
+        <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
+        <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
+      </td><td id="_0_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="0" data-play="_fullhouse"></td><td id="_1_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="0" data-play="_fullhouse"></td><td id="_2_0_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="0" data-play="_fullhouse"></td><td id="_0_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="0" data-scoresheet="1" data-play="_fullhouse"></td><td id="_1_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="1" data-scoresheet="1" data-play="_fullhouse"></td><td id="_2_1_fullhouse" class="notecell _notecell_fullhouse odd b_right " data-value="8" data-player="2" data-scoresheet="1" data-play="_fullhouse"></td><td id="_0_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="2" data-play="_fullhouse"></td><td id="_1_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="2" data-play="_fullhouse"></td><td id="_2_2_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="2" data-play="_fullhouse"></td>
+    </tr>
+    <tr class="score_row plays" data-play="_four_of_a_kind">
+      <td class="headers_col">
+        <img width="20" src="/static/alseis_files/dice-05.png">
+        <img width="20" src="/static/alseis_files/dice-05.png">
+        <img width="20" src="/static/alseis_files/dice-05.png"><br>
+        <img width="20" src="/static/alseis_files/dice-05.png">
+        <img width="20" src="/static/alseis_files/dice-02.png">
+      </td><td id="_0_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_1_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_2_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_0_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="0" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_1_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="1" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_2_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_right b_bottom " data-value="9" data-player="2" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_0_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_1_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_2_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="2" data-play="_four_of_a_kind"></td>
+    </tr>
+    <tr class="score_row plays" data-play="_yahtzee">
+      <td class="headers_col">
+        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/alseis_files/dice-02.png"><br>
+        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/alseis_files/dice-02.png">
+      </td><td id="_0_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="0" data-play="_yahtzee"></td><td id="_1_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="0" data-play="_yahtzee"></td><td id="_2_0_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="0" data-play="_yahtzee"></td><td id="_0_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="0" data-scoresheet="1" data-play="_yahtzee"></td><td id="_1_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="1" data-scoresheet="1" data-play="_yahtzee"></td><td id="_2_1_yahtzee" class="notecell _notecell_yahtzee odd b_right " data-value="10" data-player="2" data-scoresheet="1" data-play="_yahtzee"></td><td id="_0_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="2" data-play="_yahtzee"></td><td id="_1_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="2" data-play="_yahtzee"></td><td id="_2_2_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="2" data-play="_yahtzee"></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div id="menu_modal" class="modal fade">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        Partido Actual
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <table class="table table-striped">
+          <thead id="player_plays_summary_header">
+            <tr>
+              <th>Jugador</th>
+              <th>Total Jugadas</th>
+              <th>Primera</th>
+              <th>Segunda</th>
+              <th>Tercera</th>
+              <!--OBSOLETE          <th>Cuarta</th>            -->
+            </tr>
+          </thead>
+          <tbody id="player_plays_summary">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-header">
+        Jornada Actual: <span id="total_games"></span> partido/s
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <table class="table table-striped">
+          <thead id="player_global_summary_header">
+        <tr>
+          <th>Jugador</th>
+          <th>Acumulado</th>
+          <th>Puntos</th>
+          <th>Partidos</th>
+        </tr>
+      </thead>
+      <tbody id="player_global_summary">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+      </div>
+      <div class="modal-footer">
+        <button id="btn_new_game" type="button" class="btn btn-info">Nueva Partida</button>
+        <button id="btn_points" type="button" class="btn btn-info">Puntos Partida</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="figures_points_options" class="modal fade">
+<div class="modal-dialog ">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-title" id="figures_points_title">Marcar
+        <span class="modal-title-play modal-title-play_straight">escalera
+          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/alseis_files/dice-04.png">
+          <img width="20" src="/static/alseis_files/dice-03.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/alseis_files/dice-01.png">
+        </span>
+        <span class="modal-title-play modal-title-play_fullhouse">full
+          <img width="20" src="/static/alseis_files/dice-06.png">
+          <img width="20" src="/static/alseis_files/dice-06.png">
+          <img width="20" src="/static/alseis_files/dice-06.png">
+          <img width="20" src="/static/alseis_files/dice-03.png">
+          <img width="20" src="/static/alseis_files/dice-03.png">
+        </span>
+        <span class="modal-title-play modal-title-play_four_of_a_kind">póquer
+          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+        </span>
+        <span class="modal-title-play modal-title-play_yahtzee">g-tali
+          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/alseis_files/dice-02.png">
+        </span>
+      </h4>
+    </div>
+    <div class="modal-body" style="text-align: center;">
+      <h2>
+        <span class="label label-lg label-info player-info-setplay">
+          <strong class="player-info-setplay-name"></strong> <span class="badge badge-warning player-info-setplay-scoresheet"></span>
+        </span>
+      </h2>
+      <br>
+
+      <button type="button" class="btn btnsetplay btnfigure btn-danger btn-lg " data-value="0" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-record"></span><br>Huevo:(
+      </button>
+
+      <button type="button" class="btn btnsetplay btnfigure btn-warning btn-lg " data-value="1" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-ok-sign"></span><br>Xico
+      </button>
+
+      <button type="button" class="btn btnsetplay btnfigure btn-success btn-lg " data-value="1" data-bonus="true" data-dismiss="modal">
+        <span class="glyphicon glyphicon-plus-sign"></span><br>Servido
+      </button>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-info btnsetplay" data-value="-1" data-dismiss="modal">Borrar Marca</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="numbers_points_options" class="modal fade">
+<div class="modal-dialog ">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-title" id="figures_points_title">Marcar
+        <span class="modal-title-play modal-title-play_4">cuatro
+          <img width="20" src="/static/alseis_files/dice-04.png">
+        </span>
+        <span class="modal-title-play modal-title-play_5">cinco
+          <img width="20" src="/static/alseis_files/dice-05.png">
+        </span>
+        <span class="modal-title-play modal-title-play_6">seis (al seeeeeeis!)
+          <img width="20" src="/static/alseis_files/dice-06.png">
+        </span>
+      </h4>
+    </div>
+    <div class="modal-body" style="text-align: center;">
+      <h2>
+        <span class="label label-lg label-info player-info-setplay">
+          <strong class="player-info-setplay-name"></strong> <span class="badge badge-warning player-info-setplay-scoresheet"></span>
+        </span>
+      </h2>
+      <br id="number_options">
+
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_0 btn-danger btn-lg " data-value="0" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-record"></span><br><span id="btn_0">0</span>
+      </button>
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_1 btn-danger btn-lg " data-value="1" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-record"></span><br><span id="btn_1">0</span>
+      </button>
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_2 btn-warning btn-lg " data-value="2" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-ok-sign"></span><br><span id="btn_2">0</span>
+      </button>
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_3 btn-warning btn-lg " data-value="3" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-ok-sign"></span><br><span id="btn_3">0</span>
+      </button>
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_4 btn-success btn-lg " data-value="4" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-plus"></span><br><span id="btn_4">0</span>
+      </button>
+      <button type="button" class="btn btnsetplay btnnumber btnsetplay_5 btn-primary btn-lg " data-value="5" data-bonus="false" data-dismiss="modal">
+        <span class="glyphicon glyphicon-star"></span><br><span id="btn_5">0</span>
+      </button>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      <button type="button" class="btn btn-info btnsetplay" data-value="-1" data-dismiss="modal">Borrar Marca</button>
+    </div>
+  </div>
+</div>
+</div>
+
+    <!-- JQUERY -->
+    <script type="text/javascript" src="/static/alseis_files/jquery-2.1.0.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script type="text/javascript" src="/static/alseis_files/bootstrap.min.js"></script>
+
+    <!-- AL SEIS -->
+    <script type="text/javascript" src="/static/alseis_files/scoresheet.js"></script>
+    <script type="text/javascript" src="/static/alseis_files/game.js"></script>
+    <script type="text/javascript" src="/static/alseis_files/ui.js"></script>
+
+    <!-- LOCAL JAVASCRIPT -->
+    <script type="text/javascript">
+
+    var ALL_LABEL_TYPES = "label-warning label-info label-danger label-primary label-success";
+
+    function UpdateTotal(scoresheet, player)
+    {
+      var _html =
+      '<h2><span class="label label-info">' +
+      scoresheet.CurrentScore() +
+      '</span></h2>';
+      var _total = "#_" + player.no + "_" + scoresheet.no;
+      $(_total).html(_html);
+      $('#_max_' + player.no + '_' + scoresheet.no).text(scoresheet.MaxScore());
+      $('#_nplays_' + player.no + '_' + scoresheet.no).text("" + scoresheet.nnotes + "/7");
+    }
+
+    function CurrentWinners(scoresheet_number)
+    {
+      var ss = scoresheet_number;
+      var current_winners = [];
+      var _winning_score = -1;
+      for (var j = 0; j < alseis.current_game.players.length; j++) {
+        var _player = alseis.current_game.players[j];
+
+        if (_player.scoresheets[ss].CurrentScore() > _winning_score)
+        {
+          _winning_score = _player.scoresheets[ss].CurrentScore();
+          current_winners = [];
+          current_winners.push(_player);
+        } else if (_player.scoresheets[ss].CurrentScore() == _winning_score) {
+          current_winners.push(_player);
+        }
+      }
+      
+      return {
+         current_winners: current_winners,
+         winning_score: _winning_score
+      };
+    }
+
+    function UpdateWinnerStatus(scoresheet)
+    {
+      var players_status = alseis.current_game.PlayersStatus();
+      var ss = scoresheet.no;
+      var cw = CurrentWinners(ss);
+      var current_winners = cw.current_winners;
+      var _winning_score = cw.winning_score;
+
+      for (var j = 0; j < alseis.current_game.players.length; j++)
+      {
+        var $lbl_player = $("#_name_" + j + "_" + ss);
+        $lbl_player.removeClass(ALL_LABEL_TYPES);
+        $lbl_player.addClass("label-warning");
+      }
+
+      // _winning_score holds the winning score. duh!?
+      // paint dark blue on the current winning score
+      if (_winning_score > 0) {
+        for (var j = 0; j < current_winners.length; j++) 
+        {
+           var _winner = current_winners[j];
+           var $lbl_winner = $("#_name_" + _winner.no + "_" + ss);
+           $lbl_winner.removeClass("label-warning");
+           $lbl_winner.addClass("label-primary");
+        }
+      }
+
+      // check if there is a player who is defeated in this scoresheet already
+      for (var j = 0; j < alseis.current_game.players.length; j++)
+      {
+        var _player = alseis.current_game.players[j];
+        if (_player.scoresheets[ss].MaxScore() < _winning_score) {
+          var $lbl_loser = $("#_name_" + _player.no + "_" + ss);
+          $lbl_loser.removeClass(ALL_LABEL_TYPES);
+          $lbl_loser.addClass("label-danger");
+        }
+      }
+      
+    }
+
+    function UpdateIndividualScores(scoresheet, player, game, play, val, bonus)
+    {
+      var _id = "#_" + player.no + "_" + scoresheet.no + play;
+      var _html = '';
+      if (scoresheet.notes[play] != undefined) {
+        _html =
+          '<h4><span class="label label-' +
+          alseis.Scoresheet.GetColor(play, val, bonus) +
+          '">' + scoresheet.notes[play] +
+          '</span></h4>';
+      }
+      $(_id).html(_html);
+    }
+
+    function newGame()
+    {
+        // initialization
+        var _game = new alseis.Game({
+          nplayers: 3,
+          nsheets: 3
+        });
+        
+        for (var i = 0; i < alseis.players.length; i++) {
+          _game.players[i].name = alseis.players[i].name;
+        }
+
+        $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
+            // update UI with scores
+            UpdateTotal(scoresheet, player, game);
+            UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
+            UpdateWinnerStatus(scoresheet);
+        });
+
+        //$("#scoresheets_table").empty();
+/*OBSOLETE
+        for (var i = 0; i < _game.config.nsheets; i++) {
+          alseis.add_scoresheet_column(_game, i, $('#scoresheets_table'));
+        }
+*/
+        for (var i in _game.players)
+        {
+          //alseis.current_game.players[i].UpdateTotals();
+          var _player = _game.players[i];
+          for (var j in _player.scoresheets)
+          {
+            var _scoresheet = _player.scoresheets[j];
+            UpdateTotal(_scoresheet, _player);
+          }
+        }
+
+        alseis.games.push(_game);
+
+        return _game;
+    }
+
+
+    function add_player_plays (player)
+    {
+      $('#player_plays_summary').append
+      (           
+           '<tr><td>' + player.name + '</td><td>' + player.GetNNotes() + '</td>' +
+           '<td>' + player.scoresheets[0].nnotes + '</td>' +
+           '<td>' + player.scoresheets[1].nnotes + '</td>' +
+           '<td>' + player.scoresheets[2].nnotes + '</td>'
+      );
+    }
+
+    function add_player_global_summary (player)
+    {
+      $('#player_global_summary').append(
+           '<tr>' +
+               '<td>' + player.name + '</td>' +
+               '<td>' + player.points + '</td>' +
+               '<td>' + player.points + '</td>' +
+               '<td>N/A</td>' +
+           '</tr>'
+      );
+
+    }
+
+    function AddPoints(player, points)
+    {
+      alseis.players[player.no].points += points;
+    }
+
+    function AddBonus(player, points)
+    {
+        var _p = alseis.players;
+        var times = 0;
+        var total = 0;
+        $(_p).filter(function(idx, _curr_player) {
+           return _curr_player.name != player.name;
+        }).each(function(i, _curr_player) {
+            total += points;
+           _curr_player.points -= points; 
+        });
+        $(_p).filter(function(idx, _curr_player) {
+           return _curr_player.name == player.name;
+        }).each(function(i, _curr_player) {
+           _curr_player.points += total; 
+        });
+    }
+
+    $(document).ready(function() {
+
+        alseis.current_game = newGame();
+
+        // constants
+
+        var play_title =
+        {
+          _straight: 'Escalera',
+          _fullhouse: 'Full House',
+          _four_of_a_kind: 'Póquer',
+          _yahtzee: 'G-TALI'
+        };
+
+        // global handlers
+
+        $('#menu_button').click(function(e) {
+          $('#player_plays_summary').empty();
+          $('#player_global_summary').empty();
+
+          for(var i = 0; i < alseis.current_game.players.length; i++) {
+            add_player_plays(alseis.current_game.players[i]);
+          }
+          for(var i = 0; i < alseis.players.length; i++) {
+            add_player_global_summary(alseis.players[i]);
+          }
+          $('#menu_modal').modal();
+        }); // $("#menu_button).click()
+
+        $('.notecell').click(function(e) {
+          var $modal;
+          var _play = $(e.currentTarget).data('play');
+          if  (_play == '_4' || _play == '_5' || _play == '_6') {
+            $modal = $("#numbers_points_options");
+            var n = parseInt(_play.substring(1));
+            for (var i = 0; i < 6; i++) {
+              $('#btn_' + i).text(i*n);
+            }
+          } else {
+            $modal = $("#figures_points_options");
+          }
+          $('.modal-title-play').hide();
+          $('.modal-title-play' + $(e.currentTarget).data('play')).show();
+          var _sel = alseis.current_game.SelectPlay(e.currentTarget);
+          $('.player-info-setplay-name').text(_sel.player.name);
+          $('.player-info-setplay-scoresheet').text(1 + _sel.scoresheet.no);
+          $modal.modal();
+        }); // $('.notecell').click()
+
+        $('.btnsetplay').click(function(e) {
+          $t = $(e.currentTarget);
+          // set current play!
+          if ($t.data('value') == '-1') {
+            alseis.current_game.RemoveNoteSelected();
+          } else {
+            alseis.current_game.NoteSelected(
+              $t.data('value'),
+              $t.data('bonus')
+            );
+          }
+
+        }); // $('.btnsetplay').click()!
+
+        $("#btn_new_game").click(function() {
+	});
+
+        $("#btn_points").click(function() {
+          // do calculate points
+          // scoresheets
+          var _g = alseis.current_game;
+          var _p = alseis.players;
+          for(var i=0; i<_g.config.nsheets; i++) {
+            var points = i+1;
+            // pagar la casilla
+            for (var j=0; j<_p.length; j++) {
+              _p[j].points -= points;
+            }
+            // calcular ganadores
+            var _winners = CurrentWinners(i);
+            var points_winners = (1.0*(_p.length)*points)/_winners.current_winners.length;
+            for(var j=0; j<_winners.current_winners.length; j++) {
+              var _winner = _winners.current_winners[j];
+              AddPoints(_winner, points_winners);
+              if (_winners.current_winners.length == 1) {
+                  $(_p).filter(function(idx,elem) {
+                      return elem.name == _winner.name;
+                  }).each(function(idx, elem) {
+                      console.log('Adding win to : ' + elem.name);
+                      elem.current_wins += 1;
+                  });
+              }
+            }
+          }
+
+          for (var i=0; i<_p.length; i++) {
+             console.log('CURRENT WINS: ' + i + ' -> ' + _p[i].name + ' -> ' + _p[i].current_wins);
+             if (_p[i].current_wins == 4) { // cuatripleta
+               AddBonus(_p[i], 4);
+             } else if (_p[i].current_wins == 3) { // tripleta
+               AddBonus(_p[i], 2);
+             }
+             _p[i].current_wins = 0;
+          }
+
+          $('#player_global_summary').empty();
+
+          for(var i = 0; i < _p.length; i++) {
+            add_player_global_summary(_p[i]);
+          }
+
+          //alseis.current_game = newGame();
+        });
+
+      }); // $(document).ready()!
+    </script>
+  
+
+</body></html>
