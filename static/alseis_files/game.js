@@ -1,36 +1,40 @@
-// Game & Player "classes", in javascript you have to make an original object and then instantiate others by 
-// making them inherit variables and methods with the "prototype" tag on the middle from this object or its
-// children (That may themselves have more stuff to pass on
-(function( alseis, $, undefined ) {
-  // Player Class: recieves the player number (no) and the number of sheets (sheets) on instantiation
+// Game & Player classes
+(function(alseis, $, undefined) {
+  // Player class: recieves the player number (no) and the number of sheets (sheets) on instantiation
   // TODO: recieves the name as a parameter
 
   /* Has the following attributes:
     These two are initialized to the respective input values
-        no: Player number (Unique among all players)
-        sheets: Number of sheets 
+      no: Player number (Unique among all players)
+      sheets: Number of sheets 
     
-    name: Initiated as Null, modified via function "SetName(name)"
+    name: Initiated as Null, modified via method "SetName(name)"
     scoresheets: An array containing all scoresheets for the player (It will have a total of scoresheets equal to
                  the "sheets" attribute)
-
   */
   alseis.Player = function(no, sheets) {
     this.no = no;
     this.sheets = sheets;
     this.name = null;
-    // setup N (sheets) scoresheets
     this.scoresheets = [];
     var player = this;
     
+    // We create "sheets" number of Scoresheets for the current player and we assign the jQuery events that
+    // will trigger with its corresponding parameters, Scoresheets are a type of object defined in scoresheet.js
+    // both the Scoresheet and Player object use each other on their definition
     for (var i=0; i < sheets; i++) {
       var scoresheet = new alseis.Scoresheet(i, player);
+
       $(scoresheet).on('score_changed', function(e, scoresheet, play, val, bonus) {
         $(player).trigger('score_changed', [scoresheet, player, play, val, bonus]);
       });
       this.scoresheets.push(scoresheet);
     }
   };
+
+  // We define methods to manipulate the players data, "Note" sets one value on the players Scoresheet,
+  // "RemoveNote" removes one value, "SetName" changes the Players name, "GetNNotes" returns the number
+  // of marked blocks on a particular sheet or on the entire scoresheet if the input is "null" 
   alseis.Player.prototype.Note = function(sheet, play, val, bonus) {
     this.scoresheets[sheet].Note(play, val, bonus);
   };
@@ -53,9 +57,11 @@
     return n;
   };
 
-
+  // We initialize the array that contains the game objects
   alseis.games = [];
 
+// TODO cambiar nombres de estatico a dinamico
+// OBSOLETE
   alseis.players = [
     {
       name: 'VC', 
@@ -69,7 +75,7 @@
       points_by_game: [],
       current_wins: 0
     },
-    /*{
+    /*{ OBSOLETE
       name: 'CR',
       points: 0.0,
       points_by_game: [],
@@ -85,8 +91,9 @@
 
 
 
-  // game class
-
+  // Game class: recieves the config object that contains number of players and number of sheets
+  // It creates a bunch of attributes and then creates a Player object instance for every player 
+  // and links the jQuery events that will update each players sheets
   alseis.Game = function(config)
   {
     this.start_time = Date.now();
@@ -104,15 +111,18 @@
     }
   };
 
+  // Gets a particular players number of marked blocks on a particular sheet
   alseis.Game.prototype.GetNNotes = function(player, sheet) {
     return this.players[player].GetNNotes(sheet);
   };
 
+  // Unselects a play made (OBSOLETE?)
   alseis.Game.prototype.UnselectPlay = function(elem) {
     this.selected_play = null;
   };
 
   // side effect!
+  // OBSOLETE? Parece estar conectado a la funcion que abre el menu para seleccionar el score de una casilla
   alseis.Game.prototype.SelectPlay = function(elem)
   {
     var $elem = $(elem);

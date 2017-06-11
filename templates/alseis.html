@@ -27,6 +27,54 @@
   display: none;
 }
 </style>
+
+<!--SocketIO for Web-Socket-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    // Tratamos de conectarnos al servidor y guardamos el socket
+    var socket = io.connect("127.0.0.1:5000");
+
+    // Funcion que se corre si ocurre el evento especial de "se conecto"
+    socket.on("connect", function() {
+        console.log("Se conecto")
+
+        // Mandamos un evento al servidor para que este sepa que se conecto y actue de acuerdo
+        socket.emit("got connected");
+    });
+
+    socket.on("update group", function(message){
+      console.log(message)
+      
+      alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
+
+      socket.emit("got connected");
+      // CURRENT boton que pone la nota
+      /*
+      player_test = alseis.current_game.players[1];
+      scoresh_test = alseis.current_game.players[1].scoresheets[0];
+      play_test = "_4"
+      score_test = 27
+      first_try_test = false
+      console.log("Se escribe un puntaje")
+      console.log(alseis.current_game.players[1])
+      console.log(alseis.current_game.players[1].scoresheets[0])
+      
+      $(alseis.current_game.players[1]).trigger('score_changed', [scoresh_test, player_test, play_test, score_test, first_try_test]);
+        
+      UpdateTotal(scoresh_test, player_test, alseis.current_game);
+      UpdateIndividualScores(scoresh_test, player_test, alseis.current_game, play_test, score_test, first_try_test);
+      UpdateWinnerStatus(scoresh_test);
+      */
+       // $(alseis.current_game.players[1]).trigger('score_changed', [scoresh_test, player_test, play_test, score_test, first_try_test]);
+/*
+      $(player).on('score_changed', function(e, scoresheet, player, play, val, bonus) {
+        $(game).trigger('score_changed', [scoresheet, player, game, play, val, bonus]);
+      });
+*/
+    });
+</script>
+
 </head>
 <body>
 
@@ -307,6 +355,7 @@
       $(_total).html(_html);
       $('#_max_' + player.no + '_' + scoresheet.no).text(scoresheet.MaxScore());
       $('#_nplays_' + player.no + '_' + scoresheet.no).text("" + scoresheet.nnotes + "/7");
+      
     }
 
     function CurrentWinners(scoresheet_number)
@@ -372,11 +421,12 @@
       }
       
     }
-
+    // CURRENT - This is where we update the number on the score
     function UpdateIndividualScores(scoresheet, player, game, play, val, bonus)
     {
       var _id = "#_" + player.no + "_" + scoresheet.no + play;
       var _html = '';
+
       if (scoresheet.notes[play] != undefined) {
         _html =
           '<h4><span class="label label-' +
@@ -400,10 +450,10 @@
         }
 
         $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
-            // update UI with scores
-            UpdateTotal(scoresheet, player, game);
-            UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
-            UpdateWinnerStatus(scoresheet);
+          // update UI with scores
+          UpdateTotal(scoresheet, player, game);
+          UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
+          UpdateWinnerStatus(scoresheet);
         });
 
         //$("#scoresheets_table").empty();
@@ -504,7 +554,9 @@
           }
           $('#menu_modal').modal();
         }); // $("#menu_button).click()
-
+// CURRENT funcion para cambiar score al apretar la celda
+//////////////////////////////////////////////////////////////////////////////////////
+  
         $('.notecell').click(function(e) {
           var $modal;
           var _play = $(e.currentTarget).data('play');
@@ -525,21 +577,32 @@
           $modal.modal();
         }); // $('.notecell').click()
 
+//////////////////////////////////////////////////////////////////////////////////////
+// CURRENT boton que pone la nota
         $('.btnsetplay').click(function(e) {
           $t = $(e.currentTarget);
+
           // set current play!
           if ($t.data('value') == '-1') {
             alseis.current_game.RemoveNoteSelected();
           } else {
-            alseis.current_game.NoteSelected(
+              alseis.current_game.NoteSelected(
               $t.data('value'),
               $t.data('bonus')
             );
           }
 
         }); // $('.btnsetplay').click()!
+    
+//////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+  //TODO o a lo mejor OBSOLETE dependiendo de lo que se decida
         $("#btn_new_game").click(function() {
+
 	});
 
         $("#btn_points").click(function() {

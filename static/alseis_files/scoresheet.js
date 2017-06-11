@@ -1,11 +1,12 @@
 // Scoresheet "class", in javascript you have to make an original object and then instantiate others by 
 // making them inherit variables and methods with the "prototype" tag on the middle from this object or its
 // children (That may themselves have more stuff to pass on)
-(function( alseis, $, undefined ) {
+(function(alseis, $, undefined) {
   // private members:
   
-  // Bonus value for getting certain plays on your first roll
+  // Bonus value added to score for getting certain plays on your first roll
   var first_shot_bonus = 5;
+  
   // Object containing the base score for each play 
   var actual_scores = {
     '_4': 4,
