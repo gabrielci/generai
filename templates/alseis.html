@@ -35,44 +35,24 @@
     // Tratamos de conectarnos al servidor y guardamos el socket
     var socket = io.connect("127.0.0.1:5000");
 
-    // Funcion que se corre si ocurre el evento especial de "se conecto"
+    // When the app connects to the Async server it will let the server know and it will send the initial match data
     socket.on("connect", function() {
-        console.log("Se conecto")
-
-        // Mandamos un evento al servidor para que este sepa que se conecto y actue de acuerdo
-        socket.emit("got connected");
+        console.log("Got connected")
+    });
+    socket.on("disconnect", function() {
+        console.log("Got disconnected")
     });
 
-    socket.on("update group", function(message){
+
+    socket.on("initial_state", function(state) {
       console.log(message)
-      
-      alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
-
-      socket.emit("got connected");
-      // CURRENT boton que pone la nota
-      /*
-      player_test = alseis.current_game.players[1];
-      scoresh_test = alseis.current_game.players[1].scoresheets[0];
-      play_test = "_4"
-      score_test = 27
-      first_try_test = false
-      console.log("Se escribe un puntaje")
-      console.log(alseis.current_game.players[1])
-      console.log(alseis.current_game.players[1].scoresheets[0])
-      
-      $(alseis.current_game.players[1]).trigger('score_changed', [scoresh_test, player_test, play_test, score_test, first_try_test]);
-        
-      UpdateTotal(scoresh_test, player_test, alseis.current_game);
-      UpdateIndividualScores(scoresh_test, player_test, alseis.current_game, play_test, score_test, first_try_test);
-      UpdateWinnerStatus(scoresh_test);
-      */
-       // $(alseis.current_game.players[1]).trigger('score_changed', [scoresh_test, player_test, play_test, score_test, first_try_test]);
-/*
-      $(player).on('score_changed', function(e, scoresheet, player, play, val, bonus) {
-        $(game).trigger('score_changed', [scoresheet, player, game, play, val, bonus]);
-      });
-*/
     });
+
+    socket.on("update_state", function(message){
+      console.log(message)    
+      alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
+    });
+
 </script>
 
 </head>

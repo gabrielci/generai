@@ -58,6 +58,7 @@ class Game():
         for i in range(rounds):
             for player in self.players:
                 self.turn(player)
+                # Aqui se hace la parte de enviar el scoresheet print(self.scoresheets)
 
     def results(self):
         print_scoresheets(self.scoresheets)
@@ -82,6 +83,7 @@ class Game():
                     if not valid_play(decision):
                         raise Exception('Play [{0}] is invalid'.format(decision))
                     scoresheet = self.scoresheets[scoresheet][player]
+
                     if decision not in scoresheet:
                         scoresheet[decision] = play_value(decision, r, bonus)
                     else:
@@ -93,6 +95,4 @@ class Game():
                 print(traceback.format_exc())
                 print("Error inesperadamente inesperado: {0}".format(e))
                 # NOTIFY
-
-
 

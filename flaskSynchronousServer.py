@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Se crea el objeto Flask del servidor sincrono
 app = Flask(__name__)
@@ -10,6 +10,16 @@ app.config['DEBUG'] = True
 def index():
     #return render_template('index.html')
     return render_template('alseis.html')
+
+@app.route('/admin', methods=['POST', 'GET'])
+def admin_stuff():
+    if request.method == 'POST':
+        print "Llego un Post"
+    else:
+        print("Llego un Get")
+
+    return render_template('alseis.html')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001)

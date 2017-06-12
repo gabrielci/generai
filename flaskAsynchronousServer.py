@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 # Testing
-@socketio.on('got connected')
+@socketio.on('connect')
 def sendDataIO():
     # Se manda el numero del jugador (0 a 2)
     print("Input Player:")
@@ -40,12 +40,12 @@ def sendDataIO():
     message = {'player':t1, 'scoresheet':t2, 'play':t3, 'multiplier':t4, 'bonus':t5}
     print('Se envia: ')
     print(message)
-    emit('update group', message)
 
-#def player_move(player_name, move, score):
-#    pass1
-# Se define la funcion que envia los cambios a ser mostrados en la planilla de resultados
-# Make this shiet
+    emit('update_state', message)
+
+@socketio.on('data_from_py')
+def test_home():
+    print("Wow")
 
 
 if __name__ == '__main__':
