@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_socketio import SocketIO, emit
+import random
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -9,13 +10,10 @@ socketio = SocketIO(app)
 # Testing
 @socketio.on('connect')
 def sendDataIO():
+    print ("You got here")
     # Se manda el numero del jugador (0 a 2)
-    print("Input Player:")
-    t1 = input()
-
-    # Se manda el numero del scoresheet (0 a 2)
-    print("Input Scoresheet:")
-    t2 = input()
+    print("Shall we load shiet?: ")
+    answer = input()
 
     # Se manda la jugada:
     # '4'
@@ -25,28 +23,24 @@ def sendDataIO():
     # 'fullhouse'
     # 'four_of_a_kind'
     # 'yahtzee'
-    print("Input Play:")
-    t3 = '_' + input()
+    av_plays = ['_4', '_5', '_6', '_straight', '_fullhouse', '_four_of_a_kind', '_yahtzee']
+    for player_turn in range(0, 3):
+        for scoresh in range(0, 3):
+            for play in av_plays:
+                if play == '_4' or play == '_5' or play == '_6':
+                    mult = random.randint(0, 5)
+                    message = {'player': player_turn, 'scoresheet': scoresh, 'play': play, 'multiplier': mult,
+                               'bonus': 0}
+                else:
+                    mult = random.randint(0, 1)
+                    bon = random.randint(0, 1)
+                    message = {'player': player_turn, 'scoresheet': scoresh, 'play': play, 'multiplier': mult,
+                               'bonus': bon*mult}
 
-    # Se manda el multiplicador del score (Para _4, _5 y _6 se manda la cantidad de dados con dicho numero)
-    # para el resto 1
-    print("Input Multiplier:")
-    t4 = input()
-
-    # Se manda si se obtuvo la jugada en un turno (0 o 1)
-    print("Input if it was a First Roll Play:")
-    t5 = bool(input())
-
-    message = {'player':t1, 'scoresheet':t2, 'play':t3, 'multiplier':t4, 'bonus':t5}
-    print('Se envia: ')
-    print(message)
-
-    emit('update_state', message)
-
-@socketio.on('data_from_py')
-def test_home():
-    print("Wow")
-
+                print('Se envia: ')
+                print(message)
+                emit('update_state', message)
+    emit('update_state', {'DONE': 'DONE'})
 
 if __name__ == '__main__':
     socketio.run(app)

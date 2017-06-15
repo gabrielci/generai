@@ -1,4 +1,7 @@
-# 
+# To talk to the Sync server
+import requests
+
+#
 import sys
 import traceback
 
@@ -54,11 +57,15 @@ class Game():
         # FULL
         # POKER
         # GENERALA
+
+        # We send the initial data (Players names and number of scoresheets) to the sync server
+        message = {'players': self.players, "nscoresheets": self.nscoresheets}
+        requests.post('http://127.0.0.1:5001/initmatch', data=message)
+
         rounds = self.nscoresheets * 7
         for i in range(rounds):
             for player in self.players:
                 self.turn(player)
-                # Aqui se hace la parte de enviar el scoresheet print(self.scoresheets)
 
     def results(self):
         print_scoresheets(self.scoresheets)
@@ -82,10 +89,23 @@ class Game():
                 else:
                     if not valid_play(decision):
                         raise Exception('Play [{0}] is invalid'.format(decision))
+
+                    # We keep the value for later use
+                    scoresheet_n = scoresheet
+
                     scoresheet = self.scoresheets[scoresheet][player]
 
                     if decision not in scoresheet:
                         scoresheet[decision] = play_value(decision, r, bonus)
+
+                        # We tell the sync server the legal move that was made with the corresponding data so it can
+                        # update the match status on its side
+                        message = {'player': player, 'scoresheet_n': scoresheet_n, 'decision': decision, 'value':
+                                    scoresheet[decision]}
+                        print('Se envia: ')
+                        print message
+                        r = requests.post('http://127.0.0.1:5001/updatematch', data=message)
+
                     else:
                         raise Exception('Decision [{0}] is already taken'.format(decision))
                     break

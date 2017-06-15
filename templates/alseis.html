@@ -30,7 +30,7 @@
 
 <!--SocketIO for Web-Socket-->
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-
+  
 <script type="text/javascript" charset="utf-8">
     // Tratamos de conectarnos al servidor y guardamos el socket
     var socket = io.connect("127.0.0.1:5000");
@@ -49,11 +49,41 @@
     });
 
     socket.on("update_state", function(message){
-      console.log(message)    
-      alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
+      console.log("A new message has arrived to the Queue") 
+      
+      queue.push(message);
+/* IMPORTANT
+message = queue.shift();
+alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
+*/
+      
     });
+    var queue = [];
+    var timerVar = setInterval(updateTimer, 2000);
+
+    function updateTimer() {
+        if (queue.length > 0){
+            var temp = queue.shift();
+
+            if (temp.hasOwnProperty('DONE')){
+                console.log("Producer is done producing :|")
+                clearInterval(timerVar);
+            }
+            else{
+                console.log("Producer has delivered :D")
+                console.log(temp)
+                alseis.current_game.players[temp.player].scoresheets[temp.scoresheet].Note(temp.play, temp.multiplier, temp.bonus)
+            }
+        }
+        else{
+            console.log("Waiting for Producer D:")
+        }
+    }
 
 </script>
+
+<!--Script that makes sure that the information recived isnt displayed too fast-->
+
 
 </head>
 <body>

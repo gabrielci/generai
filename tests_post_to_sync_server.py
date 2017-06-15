@@ -1,11 +1,18 @@
-import requests
+import random
 
-while(1):
-    print("Input Player:")
-    t1 = input()
+av_plays = ['_4', '_5', '_6', '_straight', '_fullhouse', '_four_of_a_kind', '_yahtzee']
+for player_turn in range(0,3):
+    for scoresh in range(0, 3):
+        for play in av_plays:
+            if play == '_4' or play == '_5' or play == '_6':
+                mult = random.randint(0, 5)
+                message = {'player': player_turn, 'scoresheet': scoresh, 'play': play, 'multiplier': mult, 'bonus': 0}
+            else:
+                bon = random.randint(0, 1)
+                message = {'player': player_turn, 'scoresheet': scoresh, 'play': play, 'multiplier': 1, 'bonus': bon}
 
-    message = {'player':t1, 'scoresheet': 0, 'play': '_6', 'multiplier': 4, 'bonus': 0}
-    print('Se envia: ')
-    print(message)
+            print message
 
-    r = requests.get('http://127.0.0.1:5001/admin', data = message)
+
+
+
