@@ -60,7 +60,7 @@ class Game():
 
         # We send the initial data (Players names and number of scoresheets) to the sync server
         message = {'players': self.players, "nscoresheets": self.nscoresheets}
-        requests.post('http://127.0.0.1:5001/initmatch', data=message)
+        requests.post('http://127.0.0.1:5000/initmatch', data=message)
 
         rounds = self.nscoresheets * 7
         for i in range(rounds):
@@ -96,15 +96,17 @@ class Game():
                     scoresheet = self.scoresheets[scoresheet][player]
 
                     if decision not in scoresheet:
+                        print (decision)
+                        print (r)
+                        print (bonus)
                         scoresheet[decision] = play_value(decision, r, bonus)
 
                         # We tell the sync server the legal move that was made with the corresponding data so it can
                         # update the match status on its side
-                        message = {'player': player, 'scoresheet_n': scoresheet_n, 'decision': decision, 'value':
-                                    scoresheet[decision]}
+                        message = {'player': player, 'scoresheet_n': scoresheet_n, 'play': decision, 'bonus': bonus, 'value': scoresheet[decision]}
                         print('Se envia: ')
                         print message
-                        r = requests.post('http://127.0.0.1:5001/updatematch', data=message)
+                        r = requests.post('http://127.0.0.1:5000/updatematch', data=message)
 
                     else:
                         raise Exception('Decision [{0}] is already taken'.format(decision))

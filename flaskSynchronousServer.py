@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from socketIO_client import SocketIO
 # We make the sync server flask object
 app = Flask(__name__)
 # Debug mode (Uncomment for testing purposes)
@@ -17,9 +18,9 @@ def index():
 # The game itself checks for no duplicate names and such, this is only run when its ready to start the actual game on
 # the game program
 @app.route('/initmatch', methods=['POST'])
-def init():
+def init_match():
     if request.method == 'POST':
-        # Intialize match list and obtain the data send by client
+        # Intialize match list and obtain the data sent by client
         global match
         match = []
         r = request.form
@@ -35,33 +36,60 @@ def init():
             match.append({})
             for j in seq:
                 match[i].update({j: {}})
-                print match
 
+        print("Initial match status")
+        print(match)
         return 'A new match has begun'
     return 'Does not accept requests other than POST'
 
+
 # Function to update the current scoreboard with what the game program tells it
 @app.route('/updatematch', methods=['POST'])
-def admin_stuff():
+def update_match():
     if request.method == 'POST':
         global match
 
         # We save the data we got from the main program
         r = request.form
-        print(r)
 
         # We get the corresponding fields (Done this way so its easier to read)
         pname = r.get('player', type=str)
         scnum = r.get('scoresheet_n', type=int)
-        dec = r.get('decision', type=str)
+        play = r.get('play', type=str)
+        bonus = int(r.get('bonus', type=bool))
         val = r.get('value', type=int)
 
-        # We update the scoreboard with the data obtained
-        match[scnum][pname].update({dec: val})
+        # We calculate the base value multiplier we need to send to the client
+        # If we chose '4' and scored  20 it means we have a multiplier of 5, 4*5 = 20
+        # For the more difficult plays you either have the play or dont so the mult is 0 or 1
+        if play == '4':
+            mult = val/4
+        elif play == '5':
+            mult = val / 5
+        elif play == '6':
+            mult = val / 6
+        else:
+            if val != 0:
+                mult = 1
+            else:
+                mult = 0
+
+        # We make the message to be sent
+        message = {'player': pname, 'scoresheet': scnum, 'play': play, 'multiplier': mult, 'bonus': bonus*mult}
+
+        # We update the local scoreboard with the data obtained
+        match[scnum][pname].update({play: val})
+
+        # We send the Async Server the data so it can update the viewers
+        with SocketIO('localhost', 5001) as socketIO:
+            socketIO.emit('update_state', message)
+            print('Passed data to Async Server via websocket')
 
         return 'New match data has arrived'
     return 'Does not accept requests other than POST'
 
 # We host the server on the localhost on a selected port
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000)
+
+    print "asd"

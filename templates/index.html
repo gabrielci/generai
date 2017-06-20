@@ -1,38 +1,16 @@
 <html>
     <head>
         <h1 class="titulo">Test Generala</h1>
-        
-        <!--Importamos lo necesario para usar SocketIO-->
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-        
-        <script type="text/javascript" charset="utf-8">
-            // Tratamos de conectarnos al servidor y guardamos el socket
-            var socket = io.connect("127.0.0.1:5000");
 
-            // Funcion que se corre si ocurre el evento especial de "se conecto"
-            socket.on("connect", function() {
-                console.log("Se conecto")
+        <button onclick="myFunction()">Try it</button>
 
-                // Mandamos un evento al servidor para que este sepa que se conecto y actue de acuerdo
-                socket.emit("got connected");
-            });
-
-            socket.on("update group", function(jsonstuff){
-                // "_njugador_ncasilla_jugada"
-                /*
-                document.getElementById("_0_0_4").innerHTML = "4";
-                document.getElementById("_1_0_4").innerHTML = "20";
-                document.getElementById("_2_0_4").innerHTML = "8";
-
-                document.getElementById("_2_0_5").innerHTML = "16";
-                */
-                console.log(jsonstuff)
-                console.log(jsonstuff["var1"])
-                console.log(jsonstuff["var2"])
-                
-                
-            });
-        </script>
+        <script>
+        function myFunction() {
+            var x = document.createElement("INPUT");
+            x.setAttribute("type", "file");
+            document.body.appendChild(x);
+        }
+</script>
     </head>
 
     <body>

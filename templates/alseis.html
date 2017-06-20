@@ -32,10 +32,11 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
   
 <script type="text/javascript" charset="utf-8">
-    // Tratamos de conectarnos al servidor y guardamos el socket
-    var socket = io.connect("127.0.0.1:5000");
+    // We try accessing the async server and we store our socket info
+    var socket = io.connect('http://' + document.domain + ':5001');
 
-    // When the app connects to the Async server it will let the server know and it will send the initial match data
+
+    // Flavor text for connecting and disconnecting from the async server
     socket.on("connect", function() {
         console.log("Got connected")
     });
@@ -44,23 +45,27 @@
     });
 
 
-    socket.on("initial_state", function(state) {
+    // We modify the page number of players and scoresheets based on the options from the current running game
+    socket.on("initial_state", function(message) {
       console.log(message)
     });
 
+
+    // We put into the updates Queue the newest move that was made in the game, its done with a Queue so we can display
+    // the data at a steady and understandable pace
     socket.on("update_state", function(message){
       console.log("A new message has arrived to the Queue") 
-      
-      queue.push(message);
-/* IMPORTANT
-message = queue.shift();
-alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note(message.play, message.multiplier, message.bonus)
-*/
-      
+      console.log(message)
+      queue.push(message);   
     });
-    var queue = [];
-    var timerVar = setInterval(updateTimer, 2000);
 
+
+    // We make a function that executes based on a time interval that checks for data on the Queue to display, it will keep
+    // looking until the "Game has ended" data is removed from the Queue and at that point the timer is disabled
+    var queue = [];
+    var notice = 1;
+    
+    var timerVar = setInterval(updateTimer, 1000);
     function updateTimer() {
         if (queue.length > 0){
             var temp = queue.shift();
@@ -71,20 +76,20 @@ alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note
             }
             else{
                 console.log("Producer has delivered :D")
+                notice = 1;
                 console.log(temp)
                 alseis.current_game.players[temp.player].scoresheets[temp.scoresheet].Note(temp.play, temp.multiplier, temp.bonus)
             }
         }
         else{
-            console.log("Waiting for Producer D:")
+            if (notice == 1){
+                console.log("Waiting for Producer D:")
+                notice = 0;
+            }
         }
     }
-
+    
 </script>
-
-<!--Script that makes sure that the information recived isnt displayed too fast-->
-
-
 </head>
 <body>
 
@@ -452,7 +457,7 @@ alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note
         // initialization
         var _game = new alseis.Game({
           nplayers: 3,
-          nsheets: 3
+          nsheets: 4
         });
         
         for (var i = 0; i < alseis.players.length; i++) {
@@ -467,7 +472,7 @@ alseis.current_game.players[message.player].scoresheets[message.scoresheet].Note
         });
 
         //$("#scoresheets_table").empty();
-/*OBSOLETE
+/*OBSOLETE IMPORTANT
         for (var i = 0; i < _game.config.nsheets; i++) {
           alseis.add_scoresheet_column(_game, i, $('#scoresheets_table'));
         }

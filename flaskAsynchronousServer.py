@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_socketio import SocketIO, emit
 import random
 
@@ -7,22 +7,27 @@ app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
-# Testing
-@socketio.on('connect')
-def sendDataIO():
-    print ("You got here")
-    # Se manda el numero del jugador (0 a 2)
-    print("Shall we load shiet?: ")
-    answer = input()
 
-    # Se manda la jugada:
-    # '4'
-    # '5
-    # '6'
-    # 'straight'
-    # 'fullhouse'
-    # 'four_of_a_kind'
-    # 'yahtzee'
+# Testing
+@socketio.on('test')
+def run_test(data):
+    print('We got the message:')
+
+    print(data['data'])
+
+
+@socketio.on('update_state')
+def send_data_io(data):
+    message = {'players': ['CONIO', 'SERIAL'], 'scoresheet_n': 2}
+    print('Message and Data to send')
+    print(message)
+    print(data)
+
+    socketio.emit('update_state', data)
+    socketio.emit('update_state', {'DONE': 'DONE'})
+    '''
+    # Currently its generating plays for every box and sending them to the clients
+    
     av_plays = ['_4', '_5', '_6', '_straight', '_fullhouse', '_four_of_a_kind', '_yahtzee']
     for player_turn in range(0, 3):
         for scoresh in range(0, 3):
@@ -40,12 +45,11 @@ def sendDataIO():
                 print('Se envia: ')
                 print(message)
                 emit('update_state', message)
+    
+
+    
     emit('update_state', {'DONE': 'DONE'})
+    '''
 
 if __name__ == '__main__':
-    socketio.run(app)
-
-
-#@socketio.on('my_event')
-# var['key']
-# var.get('key', valor_por_default)
+    socketio.run(app, host='0.0.0.0', port=5001)

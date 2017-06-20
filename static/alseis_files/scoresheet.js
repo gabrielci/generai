@@ -113,7 +113,7 @@
     this.notes[play] = val != -1 ? _single_score(play, val) + (bonus ? first_shot_bonus : 0) : undefined;
     $(this).trigger('score_changed', [this, play, val, bonus]);
   };
-  /*OBSOLETE
+
   // Remove note from play
   alseis.Scoresheet.prototype.RemoveNote = function(play)
   {
@@ -121,7 +121,6 @@
     this.notes[play] = undefined;
     $(this).trigger('score_changed', [this, play]);
   }
-  */
 
   // Returns current score jotted down on the scoresheet "play" box (Remember that each particular scoresheet
   // is assigned to a player)
