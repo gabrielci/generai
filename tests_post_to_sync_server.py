@@ -1,6 +1,10 @@
-from socketIO_client import SocketIO, LoggingNamespace
+test = 'Welp' == 'Wel'
 
-with SocketIO('localhost', 5001) as socketIO:
-    message = {'data': 'Hi'}
-    socketIO.emit('test', message)
-    print('Done')
+
+print(int(test))
+
+'''
+for i in range(0, length(dic)):
+    print(type(dic))
+    print(type(a))
+'''

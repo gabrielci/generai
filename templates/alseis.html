@@ -46,17 +46,20 @@
 
 
     // We modify the page number of players and scoresheets based on the options from the current running game
-    socket.on("initial_state", function(message) {
+    socket.on("init_match", function(message) {
+      alseis.current_game = newGame({nplayers: message['player_amount'], nsheets: message['num_scoresheets'], player_numbering: message['player_numbering']})
+      //newGame(config){nplayers: 3, nsheets: 3}
       console.log(message)
     });
 
 
     // We put into the updates Queue the newest move that was made in the game, its done with a Queue so we can display
     // the data at a steady and understandable pace
-    socket.on("update_state", function(message){
+    socket.on("update_match", function(data){
+      // data = {p_num: , scoresheet_num: , play: , multiplier: , bonus: }
       console.log("A new message has arrived to the Queue") 
-      console.log(message)
-      queue.push(message);   
+      
+      queue.push(data);   
     });
 
 
@@ -64,7 +67,7 @@
     // looking until the "Game has ended" data is removed from the Queue and at that point the timer is disabled
     var queue = [];
     var notice = 1;
-    
+
     var timerVar = setInterval(updateTimer, 1000);
     function updateTimer() {
         if (queue.length > 0){
@@ -77,8 +80,9 @@
             else{
                 console.log("Producer has delivered :D")
                 notice = 1;
-                console.log(temp)
-                alseis.current_game.players[temp.player].scoresheets[temp.scoresheet].Note(temp.play, temp.multiplier, temp.bonus)
+
+                alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
+                //alseis.current_game.players[temp.p_num].scoresheets[temp.scoresheet_num].Note(temp.play, temp.multiplier, temp.bonus)
             }
         }
         else{
@@ -100,27 +104,35 @@
     <thead>
       <tr class="score_players_header success">
         <th>
-          <div id="menu_button" class="label-warning">MENU</div>
+          <!--<div id="menu_button" class="label-warning">MENU</div>-->
         </th>
-        <!--TESTING-->
-        <th class="b_top b_bottom "><h3><span id="_name_0_0" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_0" class="label label-success">235</span> <span id="_nplays_0_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_0" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_0" class="label label-success">235</span> <span id="_nplays_1_0" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_0" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_0" class="label label-success">235</span> <span id="_nplays_2_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_1" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_1" class="label label-success">235</span> <span id="_nplays_0_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_1" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_1" class="label label-success">235</span> <span id="_nplays_1_1" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_1" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_1" class="label label-success">235</span> <span id="_nplays_2_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_2" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_2" class="label label-success">235</span> <span id="_nplays_0_2" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_2" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_2" class="label label-success">235</span> <span id="_nplays_1_2" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_2" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_2" class="label label-success">235</span> <span id="_nplays_2_2" class="label label-info">0/7</span></th>
-        
+        <!--<th class="b_top b_bottom ">
+        <h3><span id="_name_0_0" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_0" class="label label-success">235</span> <span id="_nplays_0_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_0" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_0" class="label label-success">235</span> <span id="_nplays_1_0" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_0" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_0" class="label label-success">235</span> <span id="_nplays_2_0" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_1" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_1" class="label label-success">235</span> <span id="_nplays_0_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_1" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_1" class="label label-success">235</span> <span id="_nplays_1_1" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_1" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_1" class="label label-success">235</span> <span id="_nplays_2_1" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_0_2" class="label label-warning player_name">VC</span></h3><br><span id="_max_0_2" class="label label-success">235</span> <span id="_nplays_0_2" class="label label-info">0/7</span></th><th class="b_top b_bottom "><h3><span id="_name_1_2" class="label label-warning player_name">CDP</span></h3><br><span id="_max_1_2" class="label label-success">235</span> <span id="_nplays_1_2" class="label label-info">0/7</span></th><th class="b_top b_bottom b_right "><h3><span id="_name_2_2" class="label label-warning player_name">PS</span></h3><br><span id="_max_2_2" class="label label-success">235</span> <span id="_nplays_2_2" class="label label-info">0/7</span></th>
+        -->
       </tr>
      
     </thead>
     <tbody>
       
     <tr class="total_row warning">
-      <td class="headers_col"><h2>Total</h2></td><td id="_0_0" class="totalcell even " data-value="3" data-player="0" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_0" class="totalcell even " data-value="3" data-player="1" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_0" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_1" class="totalcell odd " data-value="3" data-player="0" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_1" class="totalcell odd " data-value="3" data-player="1" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_1" class="totalcell odd b_right " data-value="3" data-player="2" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_2" class="totalcell even " data-value="3" data-player="0" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_2" class="totalcell even " data-value="3" data-player="1" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_2" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td>
+      <td class="headers_col"><h2>Total</h2>
+      <!--</td><td id="_0_0" class="totalcell even " data-value="3" data-player="0" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_0" class="totalcell even " data-value="3" data-player="1" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_0" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="0" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_1" class="totalcell odd " data-value="3" data-player="0" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_1" class="totalcell odd " data-value="3" data-player="1" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_1" class="totalcell odd b_right " data-value="3" data-player="2" data-scoresheet="1" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_0_2" class="totalcell even " data-value="3" data-player="0" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_1_2" class="totalcell even " data-value="3" data-player="1" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td><td id="_2_2" class="totalcell even b_right " data-value="3" data-player="2" data-scoresheet="2" data-play=""><h2><span class="label label-info">0</span></h2></td>
+      -->
     </tr>
     <tr class="score_row digits" data-play="_4">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-04.png">&nbsp;</td><td id="_0_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="0" data-play="_4"></td><td id="_1_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="0" data-play="_4"></td><td id="_2_0_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="0" data-play="_4"></td><td id="_0_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="0" data-scoresheet="1" data-play="_4"></td><td id="_1_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="1" data-scoresheet="1" data-play="_4"></td><td id="_2_1_4" class="notecell _notecell_4 odd b_right b_top " data-value="4" data-player="2" data-scoresheet="1" data-play="_4"></td><td id="_0_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="2" data-play="_4"></td><td id="_1_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="2" data-play="_4"></td><td id="_2_2_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="2" data-play="_4"></td>
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-04.png">&nbsp;</td>
+      <!--<td id="_0_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="0" data-play="_4"></td><td id="_1_0_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="0" data-play="_4"></td><td id="_2_0_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="0" data-play="_4"></td><td id="_0_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="0" data-scoresheet="1" data-play="_4"></td><td id="_1_1_4" class="notecell _notecell_4 odd b_top " data-value="4" data-player="1" data-scoresheet="1" data-play="_4"></td><td id="_2_1_4" class="notecell _notecell_4 odd b_right b_top " data-value="4" data-player="2" data-scoresheet="1" data-play="_4"></td><td id="_0_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="0" data-scoresheet="2" data-play="_4"></td><td id="_1_2_4" class="notecell _notecell_4 even b_top " data-value="4" data-player="1" data-scoresheet="2" data-play="_4"></td><td id="_2_2_4" class="notecell _notecell_4 even b_right b_top " data-value="4" data-player="2" data-scoresheet="2" data-play="_4"></td>
+      -->
     </tr>
     <tr class="score_row digits" data-play="_5">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-05.png"></td><td id="_0_0_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="0" data-play="_5"></td><td id="_1_0_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="0" data-play="_5"></td><td id="_2_0_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="0" data-play="_5"></td><td id="_0_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="0" data-scoresheet="1" data-play="_5"></td><td id="_1_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="1" data-scoresheet="1" data-play="_5"></td><td id="_2_1_5" class="notecell _notecell_5 odd b_right " data-value="5" data-player="2" data-scoresheet="1" data-play="_5"></td><td id="_0_2_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="2" data-play="_5"></td><td id="_1_2_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="2" data-play="_5"></td><td id="_2_2_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="2" data-play="_5"></td>
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-05.png"></td>
+      <!--<td id="_0_0_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="0" data-play="_5"></td><td id="_1_0_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="0" data-play="_5"></td><td id="_2_0_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="0" data-play="_5"></td><td id="_0_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="0" data-scoresheet="1" data-play="_5"></td><td id="_1_1_5" class="notecell _notecell_5 odd " data-value="5" data-player="1" data-scoresheet="1" data-play="_5"></td><td id="_2_1_5" class="notecell _notecell_5 odd b_right " data-value="5" data-player="2" data-scoresheet="1" data-play="_5"></td><td id="_0_2_5" class="notecell _notecell_5 even " data-value="5" data-player="0" data-scoresheet="2" data-play="_5"></td><td id="_1_2_5" class="notecell _notecell_5 even " data-value="5" data-player="1" data-scoresheet="2" data-play="_5"></td><td id="_2_2_5" class="notecell _notecell_5 even b_right " data-value="5" data-player="2" data-scoresheet="2" data-play="_5"></td>
+      -->
     </tr>
     <tr class="score_row digits" data-play="_6">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-06.png"></td><td id="_0_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="0" data-play="_6"></td><td id="_1_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="0" data-play="_6"></td><td id="_2_0_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="0" data-play="_6"></td><td id="_0_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="0" data-scoresheet="1" data-play="_6"></td><td id="_1_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="1" data-scoresheet="1" data-play="_6"></td><td id="_2_1_6" class="notecell _notecell_6 odd b_right b_bottom " data-value="6" data-player="2" data-scoresheet="1" data-play="_6"></td><td id="_0_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="2" data-play="_6"></td><td id="_1_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="2" data-play="_6"></td><td id="_2_2_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="2" data-play="_6"></td>
+      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-06.png"></td>
+      <!--<td id="_0_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="0" data-play="_6"></td><td id="_1_0_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="0" data-play="_6"></td><td id="_2_0_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="0" data-play="_6"></td><td id="_0_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="0" data-scoresheet="1" data-play="_6"></td><td id="_1_1_6" class="notecell _notecell_6 odd b_bottom " data-value="6" data-player="1" data-scoresheet="1" data-play="_6"></td><td id="_2_1_6" class="notecell _notecell_6 odd b_right b_bottom " data-value="6" data-player="2" data-scoresheet="1" data-play="_6"></td><td id="_0_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="0" data-scoresheet="2" data-play="_6"></td><td id="_1_2_6" class="notecell _notecell_6 even b_bottom " data-value="6" data-player="1" data-scoresheet="2" data-play="_6"></td><td id="_2_2_6" class="notecell _notecell_6 even b_right b_bottom " data-value="6" data-player="2" data-scoresheet="2" data-play="_6"></td>
+      -->
     </tr>
     <tr class="score_row plays" data-play="_straight">
       <td class="headers_col">
@@ -129,7 +141,8 @@
         <img width="20" src="/static/alseis_files/dice-03.png"><br>
         <img width="20" src="/static/alseis_files/dice-02.png">
         <img width="20" src="/static/alseis_files/dice-01.png">
-      </td><td id="_0_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="0" data-play="_straight"></td><td id="_1_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="0" data-play="_straight"></td><td id="_2_0_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="0" data-play="_straight"></td><td id="_0_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="0" data-scoresheet="1" data-play="_straight"></td><td id="_1_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="1" data-scoresheet="1" data-play="_straight"></td><td id="_2_1_straight" class="notecell _notecell_straight odd b_right " data-value="7" data-player="2" data-scoresheet="1" data-play="_straight"></td><td id="_0_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="2" data-play="_straight"></td><td id="_1_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="2" data-play="_straight"></td><td id="_2_2_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="2" data-play="_straight"></td>
+      <!--</td><td id="_0_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="0" data-play="_straight"></td><td id="_1_0_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="0" data-play="_straight"></td><td id="_2_0_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="0" data-play="_straight"></td><td id="_0_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="0" data-scoresheet="1" data-play="_straight"></td><td id="_1_1_straight" class="notecell _notecell_straight odd " data-value="7" data-player="1" data-scoresheet="1" data-play="_straight"></td><td id="_2_1_straight" class="notecell _notecell_straight odd b_right " data-value="7" data-player="2" data-scoresheet="1" data-play="_straight"></td><td id="_0_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="0" data-scoresheet="2" data-play="_straight"></td><td id="_1_2_straight" class="notecell _notecell_straight even " data-value="7" data-player="1" data-scoresheet="2" data-play="_straight"></td><td id="_2_2_straight" class="notecell _notecell_straight even b_right " data-value="7" data-player="2" data-scoresheet="2" data-play="_straight"></td>
+      -->
     </tr>
     <tr class="score_row plays" data-play="_fullhouse">
       <td class="headers_col">
@@ -138,7 +151,8 @@
         <img width="20" src="/static/alseis_files/dice-06.png" alt="6"><br>
         <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
         <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
-      </td><td id="_0_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="0" data-play="_fullhouse"></td><td id="_1_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="0" data-play="_fullhouse"></td><td id="_2_0_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="0" data-play="_fullhouse"></td><td id="_0_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="0" data-scoresheet="1" data-play="_fullhouse"></td><td id="_1_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="1" data-scoresheet="1" data-play="_fullhouse"></td><td id="_2_1_fullhouse" class="notecell _notecell_fullhouse odd b_right " data-value="8" data-player="2" data-scoresheet="1" data-play="_fullhouse"></td><td id="_0_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="2" data-play="_fullhouse"></td><td id="_1_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="2" data-play="_fullhouse"></td><td id="_2_2_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="2" data-play="_fullhouse"></td>
+      <!--</td><td id="_0_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="0" data-play="_fullhouse"></td><td id="_1_0_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="0" data-play="_fullhouse"></td><td id="_2_0_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="0" data-play="_fullhouse"></td><td id="_0_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="0" data-scoresheet="1" data-play="_fullhouse"></td><td id="_1_1_fullhouse" class="notecell _notecell_fullhouse odd " data-value="8" data-player="1" data-scoresheet="1" data-play="_fullhouse"></td><td id="_2_1_fullhouse" class="notecell _notecell_fullhouse odd b_right " data-value="8" data-player="2" data-scoresheet="1" data-play="_fullhouse"></td><td id="_0_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="0" data-scoresheet="2" data-play="_fullhouse"></td><td id="_1_2_fullhouse" class="notecell _notecell_fullhouse even " data-value="8" data-player="1" data-scoresheet="2" data-play="_fullhouse"></td><td id="_2_2_fullhouse" class="notecell _notecell_fullhouse even b_right " data-value="8" data-player="2" data-scoresheet="2" data-play="_fullhouse"></td>
+      -->
     </tr>
     <tr class="score_row plays" data-play="_four_of_a_kind">
       <td class="headers_col">
@@ -147,7 +161,8 @@
         <img width="20" src="/static/alseis_files/dice-05.png"><br>
         <img width="20" src="/static/alseis_files/dice-05.png">
         <img width="20" src="/static/alseis_files/dice-02.png">
-      </td><td id="_0_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_1_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_2_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_0_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="0" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_1_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="1" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_2_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_right b_bottom " data-value="9" data-player="2" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_0_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_1_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_2_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="2" data-play="_four_of_a_kind"></td>
+      <!--</td><td id="_0_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_1_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_2_0_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="0" data-play="_four_of_a_kind"></td><td id="_0_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="0" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_1_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_bottom " data-value="9" data-player="1" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_2_1_four_of_a_kind" class="notecell _notecell_four_of_a_kind odd b_right b_bottom " data-value="9" data-player="2" data-scoresheet="1" data-play="_four_of_a_kind"></td><td id="_0_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="0" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_1_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_bottom " data-value="9" data-player="1" data-scoresheet="2" data-play="_four_of_a_kind"></td><td id="_2_2_four_of_a_kind" class="notecell _notecell_four_of_a_kind even b_right b_bottom " data-value="9" data-player="2" data-scoresheet="2" data-play="_four_of_a_kind"></td>
+      -->
     </tr>
     <tr class="score_row plays" data-play="_yahtzee">
       <td class="headers_col">
@@ -156,7 +171,8 @@
         <img width="20" src="/static/alseis_files/dice-02.png"><br>
         <img width="20" src="/static/alseis_files/dice-02.png">
         <img width="20" src="/static/alseis_files/dice-02.png">
-      </td><td id="_0_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="0" data-play="_yahtzee"></td><td id="_1_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="0" data-play="_yahtzee"></td><td id="_2_0_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="0" data-play="_yahtzee"></td><td id="_0_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="0" data-scoresheet="1" data-play="_yahtzee"></td><td id="_1_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="1" data-scoresheet="1" data-play="_yahtzee"></td><td id="_2_1_yahtzee" class="notecell _notecell_yahtzee odd b_right " data-value="10" data-player="2" data-scoresheet="1" data-play="_yahtzee"></td><td id="_0_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="2" data-play="_yahtzee"></td><td id="_1_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="2" data-play="_yahtzee"></td><td id="_2_2_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="2" data-play="_yahtzee"></td>
+      <!--</td><td id="_0_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="0" data-play="_yahtzee"></td><td id="_1_0_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="0" data-play="_yahtzee"></td><td id="_2_0_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="0" data-play="_yahtzee"></td><td id="_0_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="0" data-scoresheet="1" data-play="_yahtzee"></td><td id="_1_1_yahtzee" class="notecell _notecell_yahtzee odd " data-value="10" data-player="1" data-scoresheet="1" data-play="_yahtzee"></td><td id="_2_1_yahtzee" class="notecell _notecell_yahtzee odd b_right " data-value="10" data-player="2" data-scoresheet="1" data-play="_yahtzee"></td><td id="_0_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="0" data-scoresheet="2" data-play="_yahtzee"></td><td id="_1_2_yahtzee" class="notecell _notecell_yahtzee even " data-value="10" data-player="1" data-scoresheet="2" data-play="_yahtzee"></td><td id="_2_2_yahtzee" class="notecell _notecell_yahtzee even b_right " data-value="10" data-player="2" data-scoresheet="2" data-play="_yahtzee"></td>
+      -->
     </tr>
 
     </tbody>
@@ -452,18 +468,27 @@
       $(_id).html(_html);
     }
 
-    function newGame()
+    function newGame(config)
     {
-        // initialization
-        var _game = new alseis.Game({
-          nplayers: 3,
-          nsheets: 4
-        });
+        // initialization config = {nplayers: 3, nsheets: 4, player_numbering}
+        var _game = new alseis.Game(config);
         
-        for (var i = 0; i < alseis.players.length; i++) {
+        console.log('Barrier Start')
+        console.log(config)
+
+        alseis.players = [];
+        for (var i = 0; i < _game.players.length; i++) {
+          alseis.players.push({name: config.player_numbering[i.toString()]});
           _game.players[i].name = alseis.players[i].name;
         }
-
+        console.log(alseis.players)
+        console.log(_game.players)
+        /*
+        for (var i = 0; i < _game.players.length; i++) {
+          _game.players[i].name = config.player_numbering[i.toString()];
+          alseis.players.push({name: config.player_numbering[i.toString()]})          
+        }
+        */
         $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
           // update UI with scores
           UpdateTotal(scoresheet, player, game);
@@ -472,11 +497,12 @@
         });
 
         //$("#scoresheets_table").empty();
-/*OBSOLETE IMPORTANT
+
+        
         for (var i = 0; i < _game.config.nsheets; i++) {
           alseis.add_scoresheet_column(_game, i, $('#scoresheets_table'));
         }
-*/
+
         for (var i in _game.players)
         {
           //alseis.current_game.players[i].UpdateTotals();
@@ -542,11 +568,11 @@
     }
 
     $(document).ready(function() {
-
-        alseis.current_game = newGame();
+        // IMPORTANT
+        //alseis.current_game = newGame({nplayers: 2, nsheets: 3, player_numbering: {0: 'CONIO', 1: 'SERIAL'}});
+        alseis.current_game = {}
 
         // constants
-
         var play_title =
         {
           _straight: 'Escalera',
@@ -569,9 +595,10 @@
           }
           $('#menu_modal').modal();
         }); // $("#menu_button).click()
-// CURRENT funcion para cambiar score al apretar la celda
+
+// funcion para abrir ventana de cambiar score al apretar la celda
 //////////////////////////////////////////////////////////////////////////////////////
-  
+  /*
         $('.notecell').click(function(e) {
           var $modal;
           var _play = $(e.currentTarget).data('play');
@@ -591,9 +618,9 @@
           $('.player-info-setplay-scoresheet').text(1 + _sel.scoresheet.no);
           $modal.modal();
         }); // $('.notecell').click()
-
+*/
 //////////////////////////////////////////////////////////////////////////////////////
-// CURRENT boton que pone la nota
+// boton que pone la nota
         $('.btnsetplay').click(function(e) {
           $t = $(e.currentTarget);
 

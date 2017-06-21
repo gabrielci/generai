@@ -62,25 +62,27 @@
 
 // TODO cambiar nombres de estatico a dinamico
 // OBSOLETE
+  alseis.players = [];
+  
   alseis.players = [
     {
-      name: 'VC', 
+      name: 'P1', 
       points: 0.0,
       points_by_game: [],
       current_wins: 0
     },
     {
-      name: 'CDP',
+      name: 'P2',
       points: 0.0,
       points_by_game: [],
       current_wins: 0
-    },
-    /*{ OBSOLETE
+    }];/*,
+    { 
       name: 'CR',
       points: 0.0,
       points_by_game: [],
       current_wins: 0
-    },*/
+    },
     {
       name: 'PS',
       points: 0.0,
@@ -88,8 +90,7 @@
       current_wins: 0
     }
   ];
-
-
+  */
 
   // Game class: recieves the config object that contains number of players and number of sheets
   // It creates a bunch of attributes and then creates a Player object instance for every player 
