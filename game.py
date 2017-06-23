@@ -60,7 +60,6 @@ class Game():
 
         # We send the initial data (Players names and number of scoresheets) to the sync server
         message = {'players': self.players, "num_scoresheets": self.nscoresheets}
-        print message
         try:
             requests.post('http://127.0.0.1:5000/initmatch', data=message)
         except:
@@ -103,12 +102,18 @@ class Game():
                     if decision not in scoresheet:
                         scoresheet[decision] = play_value(decision, r, bonus)
 
-                        # We calculate the base value multiplier we need to send to the server
+                        # We assign the corresponding values to the variables that will be sent
                         if decision == '4':
+                            bonus = 0
+                            play = decision
                             multiplier = scoresheet[decision] / 4
                         elif decision == '5':
+                            bonus = 0
+                            play = decision
                             multiplier = scoresheet[decision] / 5
                         elif decision == '6':
+                            bonus = 0
+                            play = decision
                             multiplier = scoresheet[decision] / 6
                         else:
                             if scoresheet[decision] != 0:
@@ -116,14 +121,24 @@ class Game():
                             else:
                                 multiplier = 0
 
-                        # We make the message to be send and try to tell it to the sync server
-                        if decision == '4' or decision == '5' or decision == '6':
-                            bonus = 0
-                        message = {'p_name': player, 'scoresheet_num': scoresheet_num, 'play': decision, 'multiplier': multiplier, 'bonus': int(bonus), 'value': scoresheet[decision]}
-                        print('We are trying to send:')
+                            bonus = int(bonus)*multiplier
+                            # We translate the play input to the corresponding value in the server
+                            if decision == 'ESCALERA':
+                                play = 'straight'
+                            elif decision == 'FULLHOUSE':
+                                play = 'fullhouse'
+                            elif decision == 'POKER':
+                                play = 'four_of_a_kind'
+                            else:  # decision == 'GENERALA'
+                                play = 'yahtzee'
+
+                        # We make the message to be sent and try to tell it to the sync server
+                        message = {'p_name': player, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus, 'value': scoresheet[decision]}
+                        print('We are trying to send update message (Game -> Sync Server):')
                         print message
                         try:
                             r = requests.post('http://127.0.0.1:5000/updatematch', data=message)
+                            print('Message sent')
                         except:
                             print('Error - Failed to update - The game was not able to communicate with the synchronous server!')
 

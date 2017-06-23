@@ -1,10 +1,5 @@
-test = 'Welp' == 'Wel'
+st = [1,2,3]
+sp = {'asd': 123, '123': "asd"}
 
-
-print(int(test))
-
-'''
-for i in range(0, length(dic)):
-    print(type(dic))
-    print(type(a))
-'''
+print(len(st))
+print(len(sp))

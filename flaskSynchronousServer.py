@@ -38,8 +38,6 @@ def init_match():
         # We assign a number to each player (Based on order in dictionary)
         for i in range(0, len(player_list)):
             player_numbering[str(i)] = player_list[i]
-        print('This is the following player numbering')
-        print(player_numbering)
 
         # We append as many scoresheet libraries as "nscoresheets" says to the match list
         for i in range(0, num_scoresheets):
@@ -49,15 +47,15 @@ def init_match():
 
         # Last we pass the initial data to the async server so it can tell the client
         message = {'player_amount': len(player_list), 'player_numbering': player_numbering, 'num_scoresheets': num_scoresheets}
+        print('We are trying to send init message (Sync Server -> Async Server):')
+        print(message)
         try:
             with SocketIO('localhost', 5001) as socketIO:
                 socketIO.emit('init_match', message)
-                print('Passed data to Async Server via websocket')
+                print('Message sent')
         except:
             print('Error - Failed to initialize - The server was not able to communicate with the asynchronous server!')
 
-        print("Initial match status")
-        print(match)
         return 'A new match has begun'
     return 'Does not accept requests other than POST'
 
@@ -89,13 +87,14 @@ def update_match():
         match[scoresheet_num][p_name].update({play: value})
         # We make the message to be sent
         message = {'p_num': p_num, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus}
-        print('We are trying to send (Sync -> Async):')
+        print('We are trying to send init message (Sync Server -> Async Server):')
         print(message)
+
         # We send the Async Server the data so it can update the viewers
         try:
             with SocketIO('localhost', 5001) as socketIO:
                 socketIO.emit('update_match', message)
-                print('Passed data to Async Server via websocket')
+                print('Message sent')
         except:
             print('Error - Failed to update - The server was not able to communicate with the asynchronous server!')
 
