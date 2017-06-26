@@ -52,7 +52,6 @@ def init_match():
         try:
             with SocketIO('localhost', 5001) as socketIO:
                 socketIO.emit('init_match', message)
-                print('Message sent')
         except:
             print('Error - Failed to initialize - The server was not able to communicate with the asynchronous server!')
 
@@ -69,34 +68,49 @@ def update_match():
         # We save the data we got from the main program
         r = request.form
 
-        # We get the corresponding fields (Done this way so its easier to read)
-        p_name = r.get('p_name', type=str)
+        # We check for the 'game has finished' flag first
+        if int(r['game_has_ended']):
+            # We make the message to be sent and try to send it to the Async Server
+            message = {'game_has_ended': 1}
+            print('We are trying to send game has ended message (Sync Server -> Async Server):')
+            print(message)
 
-        for i in player_numbering:
-            if player_numbering[i] == p_name:
-                p_num = i
-                break
+            try:
+                with SocketIO('localhost', 5001) as socketIO:
+                    socketIO.emit('update_match', message)
+            except:
+                print('Error - Failed to update - The server was not able to communicate with the asynchronous server!')
 
-        scoresheet_num = r.get('scoresheet_num', type=int)
-        play = '_' + r.get('play', type=str)
-        multiplier = r.get('multiplier', type=int)
-        bonus = r.get('bonus', type=int)
-        value = r.get('value', type=int)
+        else:
+            # We get the corresponding fields (Shown this way so its easier to read)
+            print("Got em")
+            p_name = r['p_name']
 
-        # We update the local scoreboard with the data obtained
-        match[scoresheet_num][p_name].update({play: value})
-        # We make the message to be sent
-        message = {'p_num': p_num, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus}
-        print('We are trying to send init message (Sync Server -> Async Server):')
-        print(message)
 
-        # We send the Async Server the data so it can update the viewers
-        try:
-            with SocketIO('localhost', 5001) as socketIO:
-                socketIO.emit('update_match', message)
-                print('Message sent')
-        except:
-            print('Error - Failed to update - The server was not able to communicate with the asynchronous server!')
+            for i in player_numbering:
+                if player_numbering[i] == p_name:
+                    p_num = i
+                    break
+
+            scoresheet_num = int(r['scoresheet_num'])
+            play = '_' + r['play']
+            multiplier = int(r['multiplier'])
+            bonus = int(r['bonus'])
+            value = int(r['value'])
+
+            # We update the local scoreboard with the data obtained
+            match[scoresheet_num][p_name].update({play: value})
+
+            # We make the message to be sent and try to send it to the Async Server
+            message = {'p_num': p_num, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus, 'game_has_ended': 0}
+            print('We are trying to send update message (Sync Server -> Async Server):')
+            print(message)
+
+            try:
+                with SocketIO('localhost', 5001) as socketIO:
+                    socketIO.emit('update_match', message)
+            except:
+                print('Error - Failed to update - The server was not able to communicate with the asynchronous server!')
 
         return 'New match data has arrived'
     return 'Does not accept requests other than POST'
@@ -104,5 +118,3 @@ def update_match():
 # We host the server on the localhost on a selected port
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-
-    print "asd"

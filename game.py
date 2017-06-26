@@ -70,6 +70,16 @@ class Game():
             for player in self.players:
                 self.turn(player)
 
+        # We tell the sync server that the current match has finished
+        message = {'game_has_ended': 1}
+        print('We are trying to send the game has ended message (Game -> Sync Server):')
+        print(message)
+        try:
+            requests.post('http://127.0.0.1:5000/updatematch', data=message)
+        except:
+            print('Error - Failed to update - The game was not able to communicate with the synchronous server!')
+
+
     def results(self):
         print_scoresheets(self.scoresheets)
 
@@ -131,13 +141,17 @@ class Game():
                                 play = 'four_of_a_kind'
                             else:  # decision == 'GENERALA'
                                 play = 'yahtzee'
+                        # We use a flag to tell the others when the game has finished, that way the client can turn off
+                        # its timed function to display results (No point in keeping it checking for stuff that wont
+                        # arrive)
+                        game_has_ended = 0
 
                         # We make the message to be sent and try to tell it to the sync server
-                        message = {'p_name': player, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus, 'value': scoresheet[decision]}
+                        message = {'p_name': player, 'scoresheet_num': scoresheet_num, 'play': play, 'multiplier': multiplier, 'bonus': bonus, 'value': scoresheet[decision], 'game_has_ended': game_has_ended}
                         print('We are trying to send update message (Game -> Sync Server):')
                         print message
                         try:
-                            r = requests.post('http://127.0.0.1:5000/updatematch', data=message)
+                            requests.post('http://127.0.0.1:5000/updatematch', data=message)
                             print('Message sent')
                         except:
                             print('Error - Failed to update - The game was not able to communicate with the synchronous server!')

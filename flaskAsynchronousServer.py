@@ -20,14 +20,11 @@ def status_match():
     print('Someone got connected')
 
     if len(init_info) != 0:
-        print('1')
         socketio.emit('init_match', init_info)
-        print('1')
 
     if len(status_info) != 0:
-        print('2')
         socketio.emit('status_match', status_info)
-        print('2')
+
 
 @socketio.on('init_match')
 def init_match(data):
@@ -38,9 +35,7 @@ def init_match(data):
 
     print('We got info for a new match!')
     print(data)
-    print('3')
     socketio.emit('init_match', data)
-    print('3')
     print('Data sent to others')
 
 @socketio.on('update_match')
@@ -48,13 +43,8 @@ def update_match(data):
     global status_info
     status_info.append(data)
 
-    print('We are trying to send update message (Sync Server -> Async Server):')
-    print(data)
-    print('4')
     socketio.emit('update_match', data)
-    print('4')
-    print('Message sent')
-    # socketio.emit('update_match', {'DONE': 'DONE'})
+
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=5001)
