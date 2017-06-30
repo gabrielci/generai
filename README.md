@@ -32,3 +32,7 @@ Requerimientos
 	Libreria de Python para hacer un cliente en python que se comunique mediante el protocolo socketIO
 	https://pypi.python.org/pypi/socketIO-client
 	pip install socketIO-client
+
+Informacion:
+	La pagina se accede via el puerto 5000, por debajo el servidor asincrono utiliza el 5001, para su 
+	propia pc puede acceder mediante "localhost:5000" sino mediante "ip_address:5000"
