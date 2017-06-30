@@ -104,7 +104,7 @@ class Game():
                     if not valid_play(decision):
                         raise Exception('Play [{0}] is invalid'.format(decision))
 
-                    # We keep the value for later use
+                    # We keep the value for later use, this is the number corresponding to the scoresheet selected
                     scoresheet_num = scoresheet
 
                     scoresheet = self.scoresheets[scoresheet][player]
@@ -152,7 +152,6 @@ class Game():
                         print message
                         try:
                             requests.post('http://127.0.0.1:5000/updatematch', data=message)
-                            print('Message sent')
                         except:
                             print('Error - Failed to update - The game was not able to communicate with the synchronous server!')
 
@@ -163,5 +162,3 @@ class Game():
             except Exception as e:
                 print(traceback.format_exc())
                 print("Error inesperadamente inesperado: {0}".format(e))
-                # NOTIFY
-

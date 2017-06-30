@@ -6,26 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
 <!-- Bootstrap -->
-<link href="/static/alseis_files/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 <!-- al seis -->
-<link href="/static/alseis_files/alseis.css" rel="stylesheet">
+<link href="/static/css/alseis.css" rel="stylesheet">
 <style type="text/css">
-.popover
-{
-  min-width: 350 ! important;
-}
-.btnnumber
-{
-  width: 80px;
-}
-.btnfigure
-{
-  width: 125px;
-}
-.modal-title-play
-{
-  display: none;
-}
+  .popover
+  {
+    min-width: 350 ! important;
+  }
+  .btnnumber
+  {
+    width: 80px;
+  }
+  .btnfigure
+  {
+    width: 125px;
+  }
+  .modal-title-play
+  {
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -37,56 +37,55 @@
     <thead>
       <tr class="score_players_header success">
         <th>
-          <div id="menu_button" class="label-warning hidden">MENU</div>
-          <div></div>
+          <div id="menu_button" class="label-warning" hidden>MENU</div>
           <div id="upload_button" class="label-info">UPLOAD AI FILE</div>
         </th>
       </tr>
     </thead>
     <tbody>
     <tr class="total_row warning">
-      <td class="headers_col"><h2>Total</h2>
+      <td class="headers_col"><h2>Total</h2></td>
     </tr>
     <tr class="score_row digits" data-play="_4">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-04.png">&nbsp;</td>
+      <td class="headers_col"><img width="32" src="/static/img/dice-04.png"></td>
     </tr>
     <tr class="score_row digits" data-play="_5">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-05.png"></td>
+      <td class="headers_col"><img width="32" src="/static/img/dice-05.png"></td>
     </tr>
     <tr class="score_row digits" data-play="_6">
-      <td class="headers_col"><img width="32" src="/static/alseis_files/dice-06.png"></td>
+      <td class="headers_col"><img width="32" src="/static/img/dice-06.png"></td>
     </tr>
     <tr class="score_row plays" data-play="_straight">
       <td class="headers_col">
-        <img width="20" src="/static/alseis_files/dice-05.png">
-        <img width="20" src="/static/alseis_files/dice-04.png">
-        <img width="20" src="/static/alseis_files/dice-03.png"><br>
-        <img width="20" src="/static/alseis_files/dice-02.png">
-        <img width="20" src="/static/alseis_files/dice-01.png">
+        <img width="20" src="/static/img/dice-05.png">
+        <img width="20" src="/static/img/dice-04.png">
+        <img width="20" src="/static/img/dice-03.png"><br>
+        <img width="20" src="/static/img/dice-02.png">
+        <img width="20" src="/static/img/dice-01.png">
     </tr>
     <tr class="score_row plays" data-play="_fullhouse">
       <td class="headers_col">
-        <img width="20" src="/static/alseis_files/dice-06.png" alt="6">
-        <img width="20" src="/static/alseis_files/dice-06.png" alt="6">
-        <img width="20" src="/static/alseis_files/dice-06.png" alt="6"><br>
-        <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
-        <img width="20" src="/static/alseis_files/dice-03.png" alt="6">
+        <img width="20" src="/static/img/dice-06.png" alt="6">
+        <img width="20" src="/static/img/dice-06.png" alt="6">
+        <img width="20" src="/static/img/dice-06.png" alt="6"><br>
+        <img width="20" src="/static/img/dice-03.png" alt="6">
+        <img width="20" src="/static/img/dice-03.png" alt="6">
     </tr>
     <tr class="score_row plays" data-play="_four_of_a_kind">
       <td class="headers_col">
-        <img width="20" src="/static/alseis_files/dice-05.png">
-        <img width="20" src="/static/alseis_files/dice-05.png">
-        <img width="20" src="/static/alseis_files/dice-05.png"><br>
-        <img width="20" src="/static/alseis_files/dice-05.png">
-        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/img/dice-05.png">
+        <img width="20" src="/static/img/dice-05.png">
+        <img width="20" src="/static/img/dice-05.png"><br>
+        <img width="20" src="/static/img/dice-05.png">
+        <img width="20" src="/static/img/dice-02.png">
     </tr>
     <tr class="score_row plays" data-play="_yahtzee">
       <td class="headers_col">
-        <img width="20" src="/static/alseis_files/dice-02.png">
-        <img width="20" src="/static/alseis_files/dice-02.png">
-        <img width="20" src="/static/alseis_files/dice-02.png"><br>
-        <img width="20" src="/static/alseis_files/dice-02.png">
-        <img width="20" src="/static/alseis_files/dice-02.png">
+        <img width="20" src="/static/img/dice-02.png">
+        <img width="20" src="/static/img/dice-02.png">
+        <img width="20" src="/static/img/dice-02.png"><br>
+        <img width="20" src="/static/img/dice-02.png">
+        <img width="20" src="/static/img/dice-02.png">
     </tr>
 
     </tbody>
@@ -102,24 +101,8 @@
       <div class="modal-body" style="text-align: center;">
         <table class="table table-striped">
           <thead id="player_plays_summary_header">
-            <tr>
-              <th>Jugador</th>
-              <th>Total Jugadas</th>
-              <th>Primera</th>
-              <th>Segunda</th>
-              <th>Tercera</th>
-              <!--OBSOLETE          <th>Cuarta</th>            -->
-            </tr>
           </thead>
           <tbody id="player_plays_summary">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -149,8 +132,6 @@
 
       </div>
       <div class="modal-footer">
-        <button id="btn_new_game" type="button" class="btn btn-info">Nueva Partida</button>
-        <button id="btn_points" type="button" class="btn btn-info">Puntos Partida</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
@@ -164,32 +145,32 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h4 class="modal-title" id="figures_points_title">Marcar
         <span class="modal-title-play modal-title-play_straight">escalera
-          <img width="20" src="/static/alseis_files/dice-05.png">
-          <img width="20" src="/static/alseis_files/dice-04.png">
-          <img width="20" src="/static/alseis_files/dice-03.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
-          <img width="20" src="/static/alseis_files/dice-01.png">
+          <img width="20" src="/static/img/dice-05.png">
+          <img width="20" src="/static/img/dice-04.png">
+          <img width="20" src="/static/img/dice-03.png">
+          <img width="20" src="/static/img/dice-02.png">
+          <img width="20" src="/static/img/dice-01.png">
         </span>
         <span class="modal-title-play modal-title-play_fullhouse">full
-          <img width="20" src="/static/alseis_files/dice-06.png">
-          <img width="20" src="/static/alseis_files/dice-06.png">
-          <img width="20" src="/static/alseis_files/dice-06.png">
-          <img width="20" src="/static/alseis_files/dice-03.png">
-          <img width="20" src="/static/alseis_files/dice-03.png">
+          <img width="20" src="/static/img/dice-06.png">
+          <img width="20" src="/static/img/dice-06.png">
+          <img width="20" src="/static/img/dice-06.png">
+          <img width="20" src="/static/img/dice-03.png">
+          <img width="20" src="/static/img/dice-03.png">
         </span>
         <span class="modal-title-play modal-title-play_four_of_a_kind">póquer
-          <img width="20" src="/static/alseis_files/dice-05.png">
-          <img width="20" src="/static/alseis_files/dice-05.png">
-          <img width="20" src="/static/alseis_files/dice-05.png">
-          <img width="20" src="/static/alseis_files/dice-05.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/img/dice-05.png">
+          <img width="20" src="/static/img/dice-05.png">
+          <img width="20" src="/static/img/dice-05.png">
+          <img width="20" src="/static/img/dice-05.png">
+          <img width="20" src="/static/img/dice-02.png">
         </span>
         <span class="modal-title-play modal-title-play_yahtzee">g-tali
-          <img width="20" src="/static/alseis_files/dice-02.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
-          <img width="20" src="/static/alseis_files/dice-02.png">
+          <img width="20" src="/static/img/dice-02.png">
+          <img width="20" src="/static/img/dice-02.png">
+          <img width="20" src="/static/img/dice-02.png">
+          <img width="20" src="/static/img/dice-02.png">
+          <img width="20" src="/static/img/dice-02.png">
         </span>
       </h4>
     </div>
@@ -229,13 +210,13 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h4 class="modal-title" id="figures_points_title">Marcar
         <span class="modal-title-play modal-title-play_4">cuatro
-          <img width="20" src="/static/alseis_files/dice-04.png">
+          <img width="20" src="/static/img/dice-04.png">
         </span>
         <span class="modal-title-play modal-title-play_5">cinco
-          <img width="20" src="/static/alseis_files/dice-05.png">
+          <img width="20" src="/static/img/dice-05.png">
         </span>
         <span class="modal-title-play modal-title-play_6">seis (al seeeeeeis!)
-          <img width="20" src="/static/alseis_files/dice-06.png">
+          <img width="20" src="/static/img/dice-06.png">
         </span>
       </h4>
     </div>
@@ -276,20 +257,21 @@
 </div>
 
     <!-- JQUERY -->
-    <script type="text/javascript" src="/static/alseis_files/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-2.1.0.min.js"></script>
     <!-- BOOTSTRAP -->
-    <script type="text/javascript" src="/static/alseis_files/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 
     <!-- AL SEIS -->
-    <script type="text/javascript" src="/static/alseis_files/scoresheet.js"></script>
-    <script type="text/javascript" src="/static/alseis_files/game.js"></script>
-    <script type="text/javascript" src="/static/alseis_files/ui.js"></script>
+    <script type="text/javascript" src="/static/js/scoresheet.js"></script>
+    <script type="text/javascript" src="/static/js/game.js"></script>
+    <script type="text/javascript" src="/static/js/ui.js"></script>
 
     <!-- LOCAL JAVASCRIPT -->
     <script type="text/javascript">
 
     var ALL_LABEL_TYPES = "label-warning label-info label-danger label-primary label-success";
 
+    // Updates the text on the Total row
     function UpdateTotal(scoresheet, player)
     {
       var _html =
@@ -303,6 +285,7 @@
       
     }
 
+    // Calculates and returns the winner/s and the winning score
     function CurrentWinners(scoresheet_number)
     {
       var ss = scoresheet_number;
@@ -327,6 +310,8 @@
       };
     }
 
+    // Checks who is winning on a particular scoresheet and changes the color of the names based on wether the player is winning, in the running or
+    // has lost for good
     function UpdateWinnerStatus(scoresheet)
     {
       var players_status = alseis.current_game.PlayersStatus();
@@ -366,7 +351,8 @@
       }
       
     }
-    // CURRENT - This is where we update the number on the score
+
+    // This is where we update the number on the score
     function UpdateIndividualScores(scoresheet, player, game, play, val, bonus)
     {
       var _id = "#_" + player.no + "_" + scoresheet.no + play;
@@ -381,19 +367,39 @@
       }
       $(_id).html(_html);
     }
+    
 
+    var all_players_encountered = [];
+    alseis.players = [];
     function newGame(config)
     {
         var _game = new alseis.Game(config);
 
-        alseis.players = [];
+        // For every player on the current game we check if hes in the tourney list, if he is
+        // not then we create an initial entry for him
         for (var i = 0; i < _game.players.length; i++) {
-          alseis.players.push({name: config.player_numbering[i.toString()]});
-          _game.players[i].name = alseis.players[i].name;
+          in_player_enc = 1
+          for(var j = 0; j < all_players_encountered.length; j++){
+            if (config.player_numbering[i.toString()] == all_players_encountered[j]){
+              in_player_enc = 0;
+            }
+          }
+
+          if (in_player_enc){
+            alseis.players.push({name: config.player_numbering[i.toString()], 
+                                  no: i,
+                                  points: 0.0, 
+                                  points_by_game: [], 
+                                  current_wins: 0
+                                });
+            all_players_encountered.push(config.player_numbering[i.toString()]);
+          }
+
+          _game.players[i.toString()].name = config.player_numbering[i.toString()];
         }
 
+        // update UI when score changes
         $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
-          // update UI with scores
           UpdateTotal(scoresheet, player, game);
           UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
           UpdateWinnerStatus(scoresheet);
@@ -419,16 +425,27 @@
         return _game;
     }
 
+    // Function that adds the Menu screen header using the number of sheets on the current match
+    function add_player_plays_header(nsheets)
+    {
+      var player_summary_header = '<tr> <th>Jugador</th> <th>Total Jugadas</th>'
+      for(var i = 0; i < nsheets; i++) {
+        player_summary_header += '<th>'+ (i+1) + 'º</th>'
+      }           
+      player_summary_header += '</tr>'
+
+      $('#player_plays_summary_header').append(player_summary_header);
+    }
 
     function add_player_plays (player)
     {
-      $('#player_plays_summary').append
-      (           
-           '<tr><td>' + player.name + '</td><td>' + player.GetNNotes() + '</td>' +
-           '<td>' + player.scoresheets[0].nnotes + '</td>' +
-           '<td>' + player.scoresheets[1].nnotes + '</td>' +
-           '<td>' + player.scoresheets[2].nnotes + '</td>'
-      );
+      text_to_append = '<tr><td>' + player.name + '</td><td>' + player.GetNNotes() + '</td>'
+      for(var i = 0; i < player.sheets; i++) {
+        text_to_append += '<td>' + player.scoresheets[i].nnotes + '</td>'
+      }      
+      text_to_append += '</tr>'
+
+      $('#player_plays_summary').append(text_to_append);
     }
 
     function add_player_global_summary (player)
@@ -441,7 +458,21 @@
                '<td>N/A</td>' +
            '</tr>'
       );
+    }
 
+    function add_all_menu_sections (){
+      $('#player_plays_summary_header').empty();
+      add_player_plays_header(alseis.current_game.config.nsheets);
+
+      $('#player_plays_summary').empty();
+      for(var i = 0; i < alseis.current_game.players.length; i++) {
+        add_player_plays(alseis.current_game.players[i]);
+      }
+
+      $('#player_global_summary').empty();
+      for(var i = 0; i < alseis.players.length; i++) {
+        add_player_global_summary(alseis.players[i]);
+      }
     }
 
     function AddPoints(player, points)
@@ -467,11 +498,10 @@
         });
     }
 
+    // As soon as the document is loaded we initialize variables and assign button events to functions with jQuery
     $(document).ready(function() {
-        // IMPORTANT
-        //alseis.current_game = newGame({nplayers: 2, nsheets: 3, player_numbering: {0: 'CONIO', 1: 'SERIAL'}});
         alseis.current_game = {}
-
+/*
         // constants
         var play_title =
         {
@@ -480,248 +510,215 @@
           _four_of_a_kind: 'Póquer',
           _yahtzee: 'G-TALI'
         };
-
-        // global handlers
-
+*/
+        // Global Handlers
         $('#menu_button').click(function(e) {
-          $('#player_plays_summary').empty();
-          $('#player_global_summary').empty();
+          $('#player_plays_summary_header').empty();
+          add_player_plays_header(alseis.current_game.config.nsheets);
 
+          $('#player_plays_summary').empty();
           for(var i = 0; i < alseis.current_game.players.length; i++) {
             add_player_plays(alseis.current_game.players[i]);
           }
+
+          $('#player_global_summary').empty();
           for(var i = 0; i < alseis.players.length; i++) {
             add_player_global_summary(alseis.players[i]);
           }
+
           $('#menu_modal').modal();
-        }); // $("#menu_button).click()
-
-// funcion para abrir ventana de cambiar score al apretar la celda
-//////////////////////////////////////////////////////////////////////////////////////
-  /*
-        $('.notecell').click(function(e) {
-          var $modal;
-          var _play = $(e.currentTarget).data('play');
-          if  (_play == '_4' || _play == '_5' || _play == '_6') {
-            $modal = $("#numbers_points_options");
-            var n = parseInt(_play.substring(1));
-            for (var i = 0; i < 6; i++) {
-              $('#btn_' + i).text(i*n);
-            }
-          } else {
-            $modal = $("#figures_points_options");
-          }
-          $('.modal-title-play').hide();
-          $('.modal-title-play' + $(e.currentTarget).data('play')).show();
-          var _sel = alseis.current_game.SelectPlay(e.currentTarget);
-          $('.player-info-setplay-name').text(_sel.player.name);
-          $('.player-info-setplay-scoresheet').text(1 + _sel.scoresheet.no);
-          $modal.modal();
-        }); // $('.notecell').click()
-*/
-//////////////////////////////////////////////////////////////////////////////////////
-// boton que pone la nota
-        $('.btnsetplay').click(function(e) {
-          $t = $(e.currentTarget);
-
-          // set current play!
-          if ($t.data('value') == '-1') {
-            alseis.current_game.RemoveNoteSelected();
-          } else {
-              alseis.current_game.NoteSelected(
-              $t.data('value'),
-              $t.data('bonus')
-            );
-          }
-
-        }); // $('.btnsetplay').click()!
-    
-//////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-  //TODO o a lo mejor OBSOLETE dependiendo de lo que se decida
-        $("#btn_new_game").click(function() {
-
-	});
-
-        $("#btn_points").click(function() {
-          // do calculate points
-          // scoresheets
-          var _g = alseis.current_game;
-          var _p = alseis.players;
-          for(var i=0; i<_g.config.nsheets; i++) {
-            var points = i+1;
-            // pagar la casilla
-            for (var j=0; j<_p.length; j++) {
-              _p[j].points -= points;
-            }
-            // calcular ganadores
-            var _winners = CurrentWinners(i);
-            var points_winners = (1.0*(_p.length)*points)/_winners.current_winners.length;
-            for(var j=0; j<_winners.current_winners.length; j++) {
-              var _winner = _winners.current_winners[j];
-              AddPoints(_winner, points_winners);
-              if (_winners.current_winners.length == 1) {
-                  $(_p).filter(function(idx,elem) {
-                      return elem.name == _winner.name;
-                  }).each(function(idx, elem) {
-                      console.log('Adding win to : ' + elem.name);
-                      elem.current_wins += 1;
-                  });
-              }
-            }
-          }
-
-          for (var i=0; i<_p.length; i++) {
-             console.log('CURRENT WINS: ' + i + ' -> ' + _p[i].name + ' -> ' + _p[i].current_wins);
-             if (_p[i].current_wins == 4) { // cuatripleta
-               AddBonus(_p[i], 4);
-             } else if (_p[i].current_wins == 3) { // tripleta
-               AddBonus(_p[i], 2);
-             }
-             _p[i].current_wins = 0;
-          }
-
-          $('#player_global_summary').empty();
-
-          for(var i = 0; i < _p.length; i++) {
-            add_player_global_summary(_p[i]);
-          }
-
-          //alseis.current_game = newGame();
         });
+      });
 
-      }); // $(document).ready()!
+
     </script>
+
   
-  
-<!--WEB SOCKET RELATED CODE (Search this sentence to find all code related to the subject) 
-    We use SocketIO for Web-Socket related things
+<!--
+    WEB SOCKET RELATED CODE
+    We use SocketIO for establishing and using a websocket connection with the server
 
     This portion of code as it is shouldn't go in the <head> section due to it using the "alseis" object
-    which may not be defined at the moment it makes the connection with the Async server (And thus tries to reference it)
+    which may not be defined at the moment it makes the connection with the Async server (And thus tries 
+    to reference it)
 -->
 
-<!--We import the library needed to establish the web-socket with the SocketIO protocol-->
-
+<!--We import the library needed to establish the websocket with the SocketIO protocol-->
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-  
+
 <script type="text/javascript" charset="utf-8">
-    // We try accessing the async server and we store our socket info
+    // We establish the websocket connection and store our socket info
     var socket = io.connect('http://' + document.domain + ':5001');
 
-    // We log whenever someone connects or disconnects from the server TODO: Add ip address and other info in report
+    // We log whenever the client connects or disconnects from the server
     socket.on("connect", function() {
         console.log("Got connected to Async Server")
-        
     });
     socket.on("disconnect", function() {
         console.log("Got disconnected from Async Server")
     });
 
-    // We edit the match page with the initial match data so that it has the correct amount of columns (Accounts for players and scoresheet number)
+
+
+    // When a new match starts this event manages the initialization on the clients side
     var watching_match = 0;
     var timerVar;
     socket.on("init_match", function(message) {
       // If another match starts while the client has the previous match displayed this initial match scoreboard related elements must
-      // be deleted, we use a flag to detect wether this incoming match is the first one for the client or if its not
+      // be removed first, we use a flag to detect wether this incoming match is the first one for the client or if its not
       if (watching_match == 1){
-        $('._notecell_4').remove();
-        $('._notecell_5').remove();
-        $('._notecell_6').remove();
-        $('._notecell_straight').remove();
-        $('._notecell_fullhouse').remove();
-        $('._notecell_four_of_a_kind').remove();
-        $('._notecell_yahtzee').remove();
+        $('.notecell').remove();
         $('.totalcell').remove();
         $('.b_top').remove();
       }
       else{
+        // If it is the first match in the clients side we make the Menu button appear
         $('#menu_button').removeAttr('hidden');
       }
+      watching_match = 1
+      
+      // We make the new game page with the initialization parameters
+      alseis.current_game = newGame({nplayers: message['player_amount'], nsheets: message['num_scoresheets'], player_numbering: message['player_numbering']})
       
       // We activate the timer that will check for updates on the queue
       // The second parameter on setInterval is the amount of time between checks to see if theres any data in ms (1000ms = 1s)
-      timerVar = setInterval(updateTimer, 1000);
-      // We turn on a flag to remember that the client is currently watching a match (Used in case another match starts while he has the other 
-      // one displayed, this way we know to remove the old table elements first)
-      watching_match = 1
-      // We make the new game page with the initialization parameters
-      alseis.current_game = newGame({nplayers: message['player_amount'], nsheets: message['num_scoresheets'], player_numbering: message['player_numbering']})
+      timerVar = setInterval(updateTimer, 2000);
     });
 
-    // We put every move made in the match on an "updates" queue so we can then access the moves in the order they happened and
-    // use this to display the match at a slower and more comprehensive way
+    // We put every move made in the match on an updates queue so we can access the moves in the order they happened and
+    // use it to display the match at a slower and more comprehensive way (Else it can appear all in an instant)
     socket.on("update_match", function(data){
-      queue.push(data);   
+      updates_queue.push(data);   
     });
 
-    // We use this function to set the scoreboard when someone enters after the match has already jotted down points
+
+
+    function match_results(){
+      // do calculate points
+      // scoresheets
+      var _g = alseis.current_game;
+      var _p = alseis.players;
+     
+      for(var i=0; i<_g.config.nsheets; i++) {
+          // Point value of the current scoresheet (Entry = Points, Prize = Points*2)
+          var points = i+1;
+          // We substract the entry points for playing in the current scoresheet from all players
+          for (var j=0; j<_p.length; j++) {
+            _p[j].points -= points;
+          }
+
+          // We calculate the winners and give them the prize points
+          var _winners = CurrentWinners(i);
+          var points_winners = (1.0*(_p.length)*points)/_winners.current_winners.length;
+          for(var j=0; j<_winners.current_winners.length; j++) {
+            var _winner = _winners.current_winners[j];
+            AddPoints(_winner, points_winners);
+            if (_winners.current_winners.length == 1) {
+                $(_p).filter(function(idx,elem) {
+                    return elem.name == _winner.name;
+                }).each(function(idx, elem) {
+                    console.log('Adding win to : ' + elem.name);
+                    elem.current_wins += 1;
+                });
+            }
+          }
+      }
+
+      for (var i=0; i<_p.length; i++) {
+          console.log('CURRENT WINS: ' + i + ' -> ' + _p[i].name + ' -> ' + _p[i].current_wins);
+          if (_p[i].current_wins == 4) { // cuatripleta
+            AddBonus(_p[i], 4);
+          } else if (_p[i].current_wins == 3) { // tripleta
+            AddBonus(_p[i], 2);
+          }
+          _p[i].current_wins = 0;
+      }
+
+      $('#player_global_summary').empty();
+  
+      for(var i = 0; i < _p.length; i++) {
+        add_player_global_summary(_p[i]);
+      }
+    }
+
+
+
+    // We use this function to set the entire scoreboard when someone enters after the match has already jotted down points
     // It recieves the entire queue of moves done until now and puts them on the scoreboard 
-    socket.on("status_match", function(data){
-      if (watching_match == 0){
-        $('#menu_button').removeAttr('hidden');
+    socket.on("status_match", function(recieved_queue){
+      var item;
+      // For any element other than the last we put them in the scoreboard
+      while (recieved_queue.length > 1){
+        item = recieved_queue.shift();
+        alseis.current_game.Note(item.p_num, item.scoresheet_num, item.play, item.multiplier, item.bonus);
+
+        // If the player is watching the menu screen this will update it realtime, no need to close and re-press the menu button
+        add_all_menu_sections();
       }
 
-      var temp;
-      while (data.length > 1){
-        temp = data.shift();
-        alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
-      }
+      // The last item in the list may be a special "Game has ended" item, so we check for it via the game_has_ended flag
+      // If it is the special item we write the match results and shut the timer function down
+      // If its not then we proceed as before and write it down on the scoreboard
+      item = recieved_queue.shift();
+      if (item.game_has_ended){
+        console.log("Producer is done producing :|")
+        match_results();
 
-      // The last item in the list may be a special "Game has ended" item, thus we check for it and if its not we proceed as before)
-      if (data.length != 0){
-        temp = data.shift();
-        if (temp.game_has_ended){
-          console.log("Producer is done producing :|")
-          clearInterval(timerVar);
-        }
-        else{
-          alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
-        }
+        clearInterval(timerVar);
+      }
+      else{
+        alseis.current_game.Note(item.p_num, item.scoresheet_num, item.play, item.multiplier, item.bonus)
+
+        // If the player is watching the menu screen this will update it realtime, no need to close and re-press the menu button
+        add_all_menu_sections();
       }
     });
     
-    // The problem of the client waiting on the server is a "Producer-Consumer" problem, where the client 
+    // The problem of the client waiting on the server is a "Producer-Consumer" problem, where in out case the client 
     // consumes the data the server sends at a fixed rate (If there is any), the data is stored in a queue and the client
     // checks for new data with an "active wait" method which means every certain interval of time it checks
     // to see if new data is available
-    var queue = [];
+    var updates_queue = [];
 
     // The function will show on the browser console the last "event" on the producer-consumer situation which are:
-    // Consumer had data to consume, Consumer didn't had data to consume and Producer is no longer producing, if the
-    // event repeats itself consecutively it will not show the repeats (Check the 'notice' variable), once the producer
-    // tells us its done producing we remove the timer
-    var notice = 1;
-
+    //    Consumer had data to consume 
+    //    Consumer didn't had data to consume 
+    // If the event repeats itself consecutively it will not show the consecutive repeats, another event must occur
+    
     function updateTimer() {
-        if (queue.length > 0){
-            var temp = queue.shift();
+      var notice = 1;
+      if (updates_queue.length > 0){
+        var temp = updates_queue.shift();
 
-            if (temp.game_has_ended){
-                console.log("Producer is done producing :|")
-                clearInterval(timerVar);
-            }
-            else{
-                console.log("Producer has delivered :D")
-                notice = 1;
+        // If the game has ended we write the match results and shut the timer function down
+        // else we write the changes on the scoreboard
+        if (temp.game_has_ended){
+          console.log("Producer is done producing :|")
+          match_results();
 
-                alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
-            }
+          clearInterval(timerVar);
         }
         else{
-            if (notice == 1){
-                console.log("Waiting for Producer D:")
-                notice = 0;
-            }
+          console.log("Producer has delivered :D")
+          alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
+         
+          // If the player is watching the menu screen this will update it realtime, no need to close and re-press the menu button
+          add_all_menu_sections();
+
+          notice = 1;
         }
+      }
+      else{
+        if (notice == 1){
+            console.log("Waiting for Producer D:")
+            notice = 0;
+        }
+      }
     }
 
-    // We send an event to the async server telling them a client has connected (Done this way so the function on connection
-    // isnt executed by sync server when it connects to the async server)
+    // We send an event to the async server telling them the client has connected (Done this way so we can differentiate
+    // if the function on connection that has to be executed is the one for the sync server or for the client)
     socket.emit('client_connect');
 </script>
-</body></html>
+</body>
+</html>

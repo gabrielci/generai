@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from socketIO_client import SocketIO
 # We make the sync server flask object
 app = Flask(__name__)
@@ -83,9 +83,7 @@ def update_match():
 
         else:
             # We get the corresponding fields (Shown this way so its easier to read)
-            print("Got em")
             p_name = r['p_name']
-
 
             for i in player_numbering:
                 if player_numbering[i] == p_name:
@@ -114,6 +112,11 @@ def update_match():
 
         return 'New match data has arrived'
     return 'Does not accept requests other than POST'
+
+
+@app.route('/uploadfile', methods=['POST'])
+def upload_file():
+    print("We seem to have arrived")
 
 # We host the server on the localhost on a selected port
 if __name__ == "__main__":

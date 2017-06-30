@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a461a222-eac4-473b-ac2e-0bcf269c61a5" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/alseis.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-01.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-02.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-03.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-04.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-05.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/dice-06.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/game.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/jquery-2.1.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/scoresheet.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/alseis_files/ui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/die6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskAsynchronousServer.py" afterPath="$PROJECT_DIR$/flaskAsynchronousServer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskSynchronousServer.py" afterPath="$PROJECT_DIR$/flaskSynchronousServer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.py" afterPath="$PROJECT_DIR$/game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/alseis.html" afterPath="$PROJECT_DIR$/templates/alseis.html" />
@@ -22,8 +41,8 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="149" column="66" lean-forward="true" selection-start-line="149" selection-start-column="66" selection-end-line="149" selection-end-column="66" />
+            <state relative-caret-position="1700">
+              <caret line="106" column="114" lean-forward="false" selection-start-line="106" selection-start-column="114" selection-end-line="106" selection-end-column="114" />
               <folding>
                 <element signature="e#29#44#0" expanded="true" />
               </folding>
@@ -31,23 +50,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flaskSynchronousServer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flaskSynchronousServer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskSynchronousServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="2074">
+              <caret line="122" column="25" lean-forward="false" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="25" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flaskAsynchronousServer.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="flaskAsynchronousServer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flaskAsynchronousServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="33" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -58,8 +77,40 @@
       <file leaf-file-name="tests_post_to_sync_server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests_post_to_sync_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+            <state relative-caret-position="34">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/virtualenv/Lib/site-packages/flask/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="44" column="17" lean-forward="false" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/virtualenv/Lib/site-packages/flask/json.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3672">
+              <caret line="227" column="9" lean-forward="false" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -78,8 +129,8 @@
       <file leaf-file-name="generai.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generai.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -96,11 +147,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>500</find>
-      <find>127</find>
-      <find>5001</find>
       <find>self</find>
-      <find>post</find>
       <find>initm</find>
       <find>dec</find>
       <find>mult</find>
@@ -126,6 +173,10 @@
       <find>print</find>
       <find>game_has</find>
       <find>menu</find>
+      <find>post</find>
+      <find>scoresheet[decision]</find>
+      <find>value</find>
+      <find>dst</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,18 +193,18 @@
         <option value="$PROJECT_DIR$/generai.py" />
         <option value="$PROJECT_DIR$/rules.py" />
         <option value="$PROJECT_DIR$/wow.py" />
-        <option value="$PROJECT_DIR$/tests_post_to_sync_server.py" />
-        <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/flaskAsynchronousServer.py" />
+        <option value="$PROJECT_DIR$/game.py" />
+        <option value="$PROJECT_DIR$/tests_post_to_sync_server.py" />
+        <option value="$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master/app.py" />
         <option value="$PROJECT_DIR$/flaskSynchronousServer.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="x" value="478" />
+    <option name="width" value="802" />
+    <option name="height" value="991" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -181,7 +232,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -194,27 +245,10 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests_post_to_sync_server.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master/app.py" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -366,11 +400,30 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <configuration default="false" name="app" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\Gabi\Facultad\Ingenieria de Software 2\generai\virtualenv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="generai" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Sync Server" />
       <item index="1" class="java.lang.String" itemvalue="Python.Async Server" />
       <item index="2" class="java.lang.String" itemvalue="Python.Game" />
       <item index="3" class="java.lang.String" itemvalue="Python.Tests" />
+      <item index="4" class="java.lang.String" itemvalue="Python.app" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -390,15 +443,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <frame x="478" y="0" width="802" height="991" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2453125" sideWeight="0.49550563" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3741573" sideWeight="0.5169903" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25617978" sideWeight="0.5484375" order="10" side_tool="true" content_ui="tabs" x="10" y="350" width="1268" height="258" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2860386" sideWeight="0.5484375" order="10" side_tool="true" content_ui="tabs" x="10" y="350" width="1268" height="258" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -434,28 +486,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/generala.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="49" column="35" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskTests.py" />
-    <entry file="file://$PROJECT_DIR$/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generai.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -711,6 +741,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generai.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
@@ -719,48 +757,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generai.py">
+    <entry file="file://$PROJECT_DIR$/plugins/serial_dicer2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests_post_to_sync_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HTML5-jQuery-Flask-file-upload-master/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtualenv/Lib/site-packages/flask/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="44" column="17" lean-forward="false" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/virtualenv/Lib/site-packages/flask/json.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3672">
+          <caret line="227" column="9" lean-forward="false" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="149" column="66" lean-forward="true" selection-start-line="149" selection-start-column="66" selection-end-line="149" selection-end-column="66" />
+        <state relative-caret-position="1700">
+          <caret line="106" column="114" lean-forward="false" selection-start-line="106" selection-start-column="114" selection-end-line="106" selection-end-column="114" />
           <folding>
             <element signature="e#29#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests_post_to_sync_server.py">
+    <entry file="file://$PROJECT_DIR$/flaskSynchronousServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="2074">
+          <caret line="122" column="25" lean-forward="false" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskAsynchronousServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="33" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskSynchronousServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
