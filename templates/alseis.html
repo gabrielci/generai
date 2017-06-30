@@ -38,7 +38,6 @@
       <tr class="score_players_header success">
         <th>
           <div id="menu_button" class="label-warning" hidden>MENU</div>
-          <div id="upload_button" class="label-info">UPLOAD AI FILE</div>
         </th>
       </tr>
     </thead>
@@ -128,9 +127,8 @@
           <td></td>
         </tr>
       </tbody>
-    </table>
-
-      </div>
+      </table>
+    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
@@ -368,61 +366,59 @@
       $(_id).html(_html);
     }
     
-
-    var all_players_encountered = [];
-    alseis.players = [];
     function newGame(config)
     {
-        var _game = new alseis.Game(config);
+      alseis.players = [];
+      var _game = new alseis.Game(config);
 
-        // For every player on the current game we check if hes in the tourney list, if he is
-        // not then we create an initial entry for him
-        for (var i = 0; i < _game.players.length; i++) {
-          in_player_enc = 1
-          for(var j = 0; j < all_players_encountered.length; j++){
-            if (config.player_numbering[i.toString()] == all_players_encountered[j]){
-              in_player_enc = 0;
-            }
+      // For every player on the current game we check if hes in the tourney list, if he is
+      // not then we create an initial entry for him
+      for (var i = 0; i < _game.players.length; i++) {
+        /*
+        in_player_enc = 1
+        for(var j = 0; j < alseis.current_game.players.length; j++){
+          if (config.player_numbering[i.toString()] == all_players_encountered[j]){
+            in_player_enc = 0;
           }
+        }*/
 
-          if (in_player_enc){
-            alseis.players.push({name: config.player_numbering[i.toString()], 
-                                  no: i,
-                                  points: 0.0, 
-                                  points_by_game: [], 
-                                  current_wins: 0
-                                });
-            all_players_encountered.push(config.player_numbering[i.toString()]);
-          }
+        //if (in_player_enc){
+        alseis.players.push({name: config.player_numbering[i.toString()], 
+                              no: i,
+                              points: 0.0, 
+                              points_by_game: [], 
+                              current_wins: 0
+                            });
+          //all_players_encountered.push(config.player_numbering[i.toString()]);
+        //}
 
-          _game.players[i.toString()].name = config.player_numbering[i.toString()];
-        }
+        _game.players[i.toString()].name = config.player_numbering[i.toString()];
+      }
 
-        // update UI when score changes
-        $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
-          UpdateTotal(scoresheet, player, game);
-          UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
-          UpdateWinnerStatus(scoresheet);
-        });
-        
-        for (var i = 0; i < _game.config.nsheets; i++) {
-          alseis.add_scoresheet_column(_game, i, $('#scoresheets_table'));
-        }
-        
-        for (var i in _game.players)
+      // update UI when score changes
+      $(_game).on('score_changed', function(e, scoresheet, player, game, play, val, bonus) {
+        UpdateTotal(scoresheet, player, game);
+        UpdateIndividualScores(scoresheet, player, game, play, val, bonus);
+        UpdateWinnerStatus(scoresheet);
+      });
+      
+      for (var i = 0; i < _game.config.nsheets; i++) {
+        alseis.add_scoresheet_column(_game, i, $('#scoresheets_table'));
+      }
+      
+      for (var i in _game.players)
+      {
+        //alseis.current_game.players[i].UpdateTotals();
+        var _player = _game.players[i];
+        for (var j in _player.scoresheets)
         {
-          //alseis.current_game.players[i].UpdateTotals();
-          var _player = _game.players[i];
-          for (var j in _player.scoresheets)
-          {
-            var _scoresheet = _player.scoresheets[j];
-            UpdateTotal(_scoresheet, _player);
-          }
+          var _scoresheet = _player.scoresheets[j];
+          UpdateTotal(_scoresheet, _player);
         }
+      }
+      alseis.games.push(_game);
 
-        alseis.games.push(_game);
-
-        return _game;
+      return _game;
     }
 
     // Function that adds the Menu screen header using the number of sheets on the current match
@@ -455,7 +451,7 @@
                '<td>' + player.name + '</td>' +
                '<td>' + player.points + '</td>' +
                '<td>' + player.points + '</td>' +
-               '<td>N/A</td>' +
+               '<td>' + alseis.current_game.config.nsheets + '</td>' +
            '</tr>'
       );
     }
@@ -579,7 +575,8 @@
       
       // We make the new game page with the initialization parameters
       alseis.current_game = newGame({nplayers: message['player_amount'], nsheets: message['num_scoresheets'], player_numbering: message['player_numbering']})
-      
+      add_all_menu_sections();
+
       // We activate the timer that will check for updates on the queue
       // The second parameter on setInterval is the amount of time between checks to see if theres any data in ms (1000ms = 1s)
       timerVar = setInterval(updateTimer, 2000);
@@ -661,7 +658,7 @@
       // If its not then we proceed as before and write it down on the scoreboard
       item = recieved_queue.shift();
       if (item.game_has_ended){
-        console.log("Producer is done producing :|")
+        console.log("The match has ended")
         match_results();
 
         clearInterval(timerVar);
@@ -686,32 +683,22 @@
     // If the event repeats itself consecutively it will not show the consecutive repeats, another event must occur
     
     function updateTimer() {
-      var notice = 1;
       if (updates_queue.length > 0){
         var temp = updates_queue.shift();
 
         // If the game has ended we write the match results and shut the timer function down
         // else we write the changes on the scoreboard
         if (temp.game_has_ended){
-          console.log("Producer is done producing :|")
+          console.log("The match has ended")
           match_results();
 
           clearInterval(timerVar);
         }
         else{
-          console.log("Producer has delivered :D")
           alseis.current_game.Note(temp.p_num, temp.scoresheet_num, temp.play, temp.multiplier, temp.bonus)
          
           // If the player is watching the menu screen this will update it realtime, no need to close and re-press the menu button
           add_all_menu_sections();
-
-          notice = 1;
-        }
-      }
-      else{
-        if (notice == 1){
-            console.log("Waiting for Producer D:")
-            notice = 0;
         }
       }
     }
