@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, jsonify
 from socketIO_client import SocketIO
 # We make the sync server flask object
 app = Flask(__name__)
-# Debug mode (Uncomment for testing purposes)
-app.config['DEBUG'] = True
+# Uncomment for testing purposes
+# app.config['DEBUG'] = True
 
 # Initialize match and PlayerName: PlayerNumber containers
 match = []

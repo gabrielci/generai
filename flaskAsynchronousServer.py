@@ -7,7 +7,8 @@ init_info = {}
 status_info = []
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
+# Uncomment for testing purposes
+# app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
